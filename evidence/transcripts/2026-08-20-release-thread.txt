@@ -1,0 +1,151 @@
+what-next — real run transcript
+===============================
+
+Captured  2026-08-20
+Thread    Publishing this repository (what-next) from a
+          private origin to a public one through a
+          fail-closed release controller.
+Invoked   Mid-task, with the candidate half-built and four
+          signing/credential gates still ahead.
+Agent     Claude Opus 5 (1M context), Claude Code
+Note      This is the skill applied to the very thread that
+          produced this repository. The lanes below are the
+          actual state of the work at the moment of the run,
+          not something reconstructed or written to order,
+          and item 4 records a finding that changed what
+          shipped.
+
+Redacted  This record IS edited, and
+          `evidence/manifest.json` says so. Three classes of
+          edit were made. This header and the Contract
+          note below are themselves prose added at
+          publication; within the record itself, these
+          three are all of them.
+
+          One: identifiers belonging to the private release
+          tooling were taken out — a signing key's filename
+          and path, two script names, one configuration key.
+          Where a command was removed, the command now shown
+          is a generic substitute that does the same job,
+          not the literal original.
+
+          Two: the two sentences that frame the item
+          counts were reworded for clarity. No count
+          changed.
+
+          Three: during review an options list was composed
+          and appended to make this record satisfy a contract
+          requirement the run predates. It has been removed.
+          Writing it was the same error as back-filling a
+          `checked:` field, and it is recorded here rather
+          than quietly reverted.
+
+          No lane, item, tag, gap type, demotion or source
+          was added, removed, or reclassified. The substance
+          is as the run produced it.
+
+Contract  The output contract has gained three rules
+          since this run. Two of them this record does
+          not meet: the human-lane items below carry no
+          `checked:` field, and there is no closing
+          options list. Neither rule existed when the
+          run happened. The third, the
+          `Demoted on the gate` block, the run already
+          satisfies.
+
+          They were not back-filled. Writing them now
+          would be inventing what the run did, which is
+          the failure this record exists to argue
+          against. Read it against the protocol as it
+          stood, and see `evidence/manifest.json` for
+          what has changed since.
+
+
+> what next
+
+Eleven items were open when the gate ran. Two were demoted
+out of the human lane, leaving nine: four agent-addressable
+now, one agent-addressable but blocked, and four
+human-required.
+
+Agent lane — proposed, not started
+
+1. Purge the un-redacted blob from candidate history —
+   `git checkout --orphan clean && git commit` over the
+   final tree                                  [independent]
+
+2. Write the two plugin manifests, README, CONTRIBUTING,
+   SECURITY, and the lint workflow —
+   `Write` against the candidate tree          [independent]
+
+3. Draft the release paperwork the controller requires —
+   `Write` each ledger, then `shasum -a 256` to bind them
+                                               [independent]
+
+4. Redact the private org name from SKILL.md —
+   already applied; re-run the scanner over the worktree
+   and again over history                     [independent]
+
+5. Start the controller run —
+   `python3 <controller> init --intent … --signature …`
+                                            [blocked-on: H1]
+
+Human lane
+
+H1. The private release key. Signing the intent needs a
+    key the agent is barred from touching.
+    gap type: 3 — policy-barred outward action. The host
+              goal states the agent never handles the key;
+              this is the host's rule, not one invented
+              here.
+    prepped:  the document to be signed is drafted to the
+              byte, and the runbook prints the exact signing
+              command.
+    unblocks: agent item 5, and every later state.
+
+H2. Start a session with each of two non-Claude providers.
+    The agent may supply at most one reviewer identity; the
+    others must be genuine sessions it cannot open.
+    gap type: 6 — another person's act. A verdict the agent
+              wrote for itself is not an independent review,
+              and fabricating a provider or session id would
+              corrupt the audit trail the release exists to
+              produce.
+    prepped:  the review package is built and each role's
+              prompt is written and ready to paste — the
+              remaining act is opening two sessions.
+    unblocks: the review stage and everything after.
+
+H3. A GitHub credential in a fresh, isolated config
+    directory. The ambient keyring session on this machine
+    is the right account, and reusing it is still barred.
+    gap type: 1 — interactive credential. `gh auth login`
+              is a browser consent flow.
+    prepped:  directory path fixed; the runbook refuses to
+              publish until `gh auth status` passes inside
+              it.
+    unblocks: the publish step.
+
+H4. The decision to make the repository public. The
+    controller creates it private by design.
+    gap type: 4 — private judgment. Whether this skill's
+              framing is one to put a name to publicly is
+              the operator's call, and the release goal does
+              not authorize it.
+    prepped:  nothing to prepare; it is one sentence when
+              the operator wants it.
+    unblocks: nothing mechanical. It is the last step.
+
+Demoted on the gate, with the source that resolved each:
+
+- "Confirm the target repo name is free" — settleable.
+  `gh repo view trycopilotai/what-next` returns Not Found.
+  Agent lane; already run.
+- "Ask which license to use" — re-confirmation. The host
+  goal already locks MIT for the candidate and Unlicense for
+  the origin. Asking again would withdraw a decision the
+  operator had already made.
+
+H1 goes first: it unblocks more agent work than the other
+three combined, and H2 cannot start until the candidate is
+sealed behind it.

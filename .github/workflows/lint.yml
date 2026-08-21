@@ -1,0 +1,49 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+      # Both checkouts land in siblings rather than nesting, so
+      # the linter's own Markdown is never part of the tree
+      # being linted.
+      #
+      # Pinned to commit SHAs. Tags are mutable and this
+      # workflow runs on pull requests from forks.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          path: repo
+
+      # The linter is a separate public repository. This is a
+      # TAG, not a SHA, and the comment above applies to it too:
+      # trycopilotai/lint can move v0.1.7. That is accepted
+      # deliberately — the linter is a first-party repository and
+      # a formatting check is not a supply-chain boundary in the
+      # way a running action is. Pin a SHA here if that stops
+      # being true.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: trycopilotai/lint
+          ref: v0.1.7
+          path: lint
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.13"
+
+      # Read-only: the job reports drift, it does not rewrite
+      # the tree and push a fixup.
+      - name: Check Markdown formatting
+        run: |
+          python3 lint/lint.py \
+            --cwd repo \
+            --language markdown \
+            --read-only

@@ -1,0 +1,7 @@
+interface:
+  display_name: "What Next"
+  short_description:
+    "Split open work into an agent lane and a human lane"
+  default_prompt:
+    "Split this thread's open work into what you can run now
+    and what needs me."

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-20",
+  "input_commit": "1912bd27d90dc4f312a85046e89baa322de5b0fd",
+  "protocol": {
+    "path": "skills/what-next/SKILL.md",
+    "sha256": "9610aef5508bd0e9f55ee99845f081d3b631fcd973a580d7af8ba6c34a5eff0c",
+    "note": "This is the CURRENT protocol, not the text the run of 2026-08-20 executed. The protocol has been revised since, in six ways: the worked example was rewritten to remove a private repository; the demotion gate was given an explicit bound; gap type 3 gained a no-policy fallback; the output contract gained a `checked:` field for human-lane items; it gained a required closing options list; and it gained a `Demoted on the gate` block. The last three are the ones that decide how to read the transcript: it satisfies the demotion block and falls short of the other two \u2014 see the Contract note in the transcript header. The text as it stood at capture time is not shipped because it contained the private material the rewrite removed. Read this hash as 'the protocol this repository ships', never as 'the protocol that produced the transcript'.",
+    "current_at_capture": false
+  },
+  "interface": {
+    "path": "skills/what-next/agents/openai.yaml",
+    "sha256": "bfafadc62ad1e10abcea146b0490d7c6bb03209ff629a90c34e43c242b48b4cb"
+  },
+  "agent": {
+    "product": "Claude Code",
+    "version": "2.1.237",
+    "model": "claude-opus-5"
+  },
+  "invocation": "what next",
+  "pickup": {
+    "install_location": "~/.claude/skills/what-next",
+    "command_name": "/what-next",
+    "attribution_skill": "what-next"
+  },
+  "result": {
+    "path": "evidence/transcripts/2026-08-20-release-thread.txt",
+    "sha256": "9b4be10a925331f88176daae750e00f065be8fd7a20df24199e5ebeb6bd78e11",
+    "kind": "authored-record",
+    "edited": true,
+    "redactions": {
+      "identifiers": "A signing key's filename and path, two script names, and one configuration key, all belonging to private release tooling. Where a command was removed, the command now shown is a generic substitute that does the same job, not the literal original.",
+      "rewording": "The two sentences that frame the item counts were reworded for clarity. No count changed.",
+      "reverted": "During review an options list was composed and appended to make this record satisfy a contract requirement the run predates. It has been removed. Recording it here rather than reverting it quietly.",
+      "preserved": "No lane, item, tag, gap type, demotion or source was added, removed, or reclassified.",
+      "why": "The run happened on a private thread. Publishing the record meant removing names that identify systems the reader cannot see and that the operator did not choose to publish."
+    }
+  },
+  "capture": {
+    "method": "in-session",
+    "note": "The skill's protocol was applied to the live thread that was building this repository, by the same agent doing that work, and the resulting two-lane split was written to the transcript file. It is not a capture of a separate session's last message, and it is not an independent evaluation. The lanes describe the real state of that thread at the time; the demotions and gap types are the protocol's actual output, not an illustration."
+  },
+  "input_commit_note": "The commit the skill text came from. It is not reachable from this repository, so it pins provenance for the author rather than being verifiable by a reader."
+}

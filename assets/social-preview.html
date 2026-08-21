@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>what-next social preview</title>
+    <style>
+      :root {
+        --bg: #0d1117;
+        --fg: #e6edf3;
+        --muted: #8b949e;
+        --rule: #21262d;
+        --agent: #7ee787;
+        --human: #ffa657;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1280px;
+        height: 640px;
+      }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: ui-sans-serif, -apple-system, "Helvetica Neue",
+          Arial, sans-serif;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        padding: 72px 80px 64px;
+      }
+      h1 {
+        font-size: 92px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      }
+      .tagline {
+        margin-top: 20px;
+        font-size: 31px;
+        line-height: 1.35;
+        color: var(--fg);
+        max-width: 20ch;
+        font-weight: 500;
+      }
+      .lanes {
+        display: flex;
+        gap: 56px;
+        align-items: flex-start;
+        border-top: 1px solid var(--rule);
+        padding-top: 28px;
+      }
+      .lane {
+        flex: 1;
+      }
+      .lane h2 {
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      }
+      .agent h2 {
+        color: var(--agent);
+      }
+      .human h2 {
+        color: var(--human);
+      }
+      .lane p {
+        font-size: 21px;
+        line-height: 1.45;
+        color: var(--muted);
+      }
+      .split {
+        position: absolute;
+        top: 72px;
+        right: 80px;
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+        width: 380px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .chip {
+        height: 15px;
+        border-radius: 8px;
+      }
+      .chip.a {
+        background: var(--agent);
+      }
+      .chip.h {
+        background: var(--human);
+      }
+      .dim {
+        background: var(--rule);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="split">
+      <div class="row">
+        <span class="chip a" style="width: 200px"></span>
+        <span class="chip dim" style="width: 92px"></span>
+      </div>
+      <div class="row">
+        <span class="chip a" style="width: 264px"></span>
+        <span class="chip dim" style="width: 48px"></span>
+      </div>
+      <div class="row">
+        <span class="chip a" style="width: 152px"></span>
+        <span class="chip dim" style="width: 128px"></span>
+      </div>
+      <div class="row">
+        <span class="chip a" style="width: 232px"></span>
+        <span class="chip dim" style="width: 64px"></span>
+      </div>
+      <div class="row" style="margin-top: 18px">
+        <span class="chip h" style="width: 176px"></span>
+        <span class="chip dim" style="width: 104px"></span>
+      </div>
+      <div class="row">
+        <span class="chip h" style="width: 120px"></span>
+        <span class="chip dim" style="width: 148px"></span>
+      </div>
+    </div>
+
+    <div>
+      <h1>what-next</h1>
+      <p class="tagline">
+        What an agent can run now, and what only you can do.
+      </p>
+    </div>
+
+    <div class="lanes">
+      <div class="lane agent">
+        <h2>Agent lane</h2>
+        <p>Every item names the exact tool call, tagged
+          independent or blocked-on.</p>
+      </div>
+      <div class="lane human">
+        <h2>Human lane</h2>
+        <p>Six capability gaps. Nothing else qualifies, and
+          the gap is written, not the task.</p>
+      </div>
+    </div>
+  </body>
+</html>
