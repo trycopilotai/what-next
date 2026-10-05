@@ -1,0 +1,20 @@
+{
+  "name": "trycopilotai-what-next",
+  "interface": {
+    "displayName": "trycopilot.ai What Next"
+  },
+  "plugins": [
+    {
+      "name": "what-next",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

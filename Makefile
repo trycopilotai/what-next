@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := check
 
 check:
-	@python3 tests/test_integrations.py
+	@python3 -m unittest discover -s tests
 
 .PHONY: check

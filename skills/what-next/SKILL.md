@@ -7,7 +7,7 @@ description: >-
   before handing control back: enumerate the open items,
   prove which ones are genuinely blocked on a capability the
   agent lacks, and return a two-lane split plus a short list
-  of next actions.
+  of next actions with consistent `A1` and `H1` identifiers.
 ---
 
 # What Next
@@ -83,16 +83,14 @@ following are **not** capability gaps:
   would answer it, that is agent work. Run it.
 
 An item that fails the gate is agent work. Classify it into
-the agent lane, and report it in the `Demoted on the gate`
-block with the source that settled it, so a reader can see
-both that it was considered and why it did not qualify.
+the agent lane and record the resolving source in its
+`Basis` cell, so the reader can see why it did not qualify.
 
 ## The six gaps that qualify
 
 1. **Interactive credential.** A login prompt, 2FA, OAuth
    consent, a keychain unlock. Hand back the literal
-   command. In Claude Code, tell the operator to run it
-   `!`-prefixed so its output lands in the thread.
+   command. See **Host adapters** for capturing its output.
 2. **Physical or GUI-modal.** A device to plug in, an OS
    permission dialog, a restart, a hardware key tap.
 3. **Policy-barred outward action.** Where the host states a
@@ -124,7 +122,8 @@ agent work.
 Tag every agent-lane item:
 
 - `independent` — runnable right now.
-- `blocked-on: <human item>` — name which one.
+- `blocked on Hn` — name the human item by ID. If several
+  human actions are required, list them: `blocked on H1, H2`.
 
 This is what makes the split actionable. Without it, one
 human blocker reads as a stop on everything, and the most
@@ -147,60 +146,73 @@ prefix that reduces it to a single action.
 | Reply to a person | Draft in their register         |
 
 A human item with no prefix named is under-analyzed. Reduce
-every one to a keystroke or a sentence.
-
-A prefix that was already done before this skill ran belongs
-in `prepped:`. A prefix that still needs doing is an
-agent-lane item like any other, proposed and not performed —
-this skill does not execute its own lane in order to shrink
-a human item.
+every one to a keystroke or a sentence. Preparation already
+completed before this invocation belongs in `Prepared`.
+Unfinished preparation is a proposed agent item, referenced
+by its `A` ID; never describe it as already done.
 
 ## Output contract
 
-Report the table first — it survives scrollback — then the
-options.
+Use these headings and columns in this order. Render the
+tables as Markdown, outside a code fence:
 
-```text
-Agent lane — proposed, not started
-1. <item> — <the exact tool call>  [independent]
-2. <item> — <the exact tool call>  [blocked-on: H1]
+### Agent lane — proposed, not started
 
-Human lane
-H1. <the gap, not the task>
-    gap type: <one of the six>
-    checked:  <the sources you ran, or n/a and why>
-    prepped:  <what is already done>
-    unblocks: <which agent items>
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | <action> | `<concrete call>` | independent | <resolving source or evidence> |
+| A2 | <action after H1> | `<concrete call>` | blocked on H1 | <missing precondition> |
 
-Demoted on the gate
-- <item> — <the source that settled it>
-```
+### Human lane
 
-`checked:` is the load-bearing one. A demotion proves itself
-— the item arrives in the agent lane with a command attached
-and the reader can re-run it. An item that _stays_ in the
-human lane rests on an unfalsifiable negative: five checks
-that found nothing. Record which sources you actually ran,
-and write `n/a` with a reason for any that cannot apply.
-Searching the public web for whether the operator will sign
-a key is theatre; say so rather than implying you did it.
+| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1 | <one action that closes the gap> | <one of the six gaps> | <completed preparation; pending: A1 if applicable> | A2 | <sources checked, result, and policy when relevant> |
 
-Then present 1 to 4 options, drawn from both lanes and
-ordered by how much each one unblocks. Keep labels short and
-free of appraisal: no "(Recommended)", no verdict on which
-option is good. When more than four candidates exist, state
-the residue count declaratively in the prose above them
-rather than dropping it.
+Order independent agent items before blocked items. Order
+human items by how many agent items they unblock; preserve
+thread order for ties. Assign contiguous IDs after ordering:
+`A1`, `A2`, and `H1`, `H2`. IDs stay unchanged throughout
+this report, including dependencies and choices. A later
+report may reclassify work and assign new IDs.
 
-Use the operator's next-action picker where the host has
-one. Where it does not — Codex has no picker — end with the
-same 1 to 4 options as a plain numbered list under a `Next`
-heading, one line each, and stop. The options are the
-deliverable; the widget is not.
+In `Basis`, name evidence that resolves an agent item or
+the checks supporting a human gap. For an inapplicable or
+unavailable source, say `n/a` and why. A demotion belongs in
+the Agent table with its resolving source; no separate
+demotion block is needed. Use `None` for a field with no
+applicable value. Keep cells concise and escape literal
+`|` characters. If a lane is empty, retain its heading and
+write `None` instead of an empty table. If both are empty,
+do not invent a choice.
+
+`Next tool/command` names an actual host tool with its
+target, or a literal shell command. A phrase such as
+"write the notes" is not a tool call. Do not invent command
+arguments or dependencies; if an argument still needs
+discovery, propose that discovery as the next agent action.
+`Prepared` describes work that can precede the human act,
+never the downstream action it unlocks.
+
+### Next
+
+Present 1 to 4 actionable choices drawn from both lanes,
+ordered by how much each unblocks, using the host adapter
+below. Only offer independent agent items or human actions
+that can be performed now. A blocked agent item stays in
+the table until its preconditions hold. Every choice starts
+with its ID, such as `A1: Draft the reply` or `H1: Sign in`.
+Keep labels short and neutral; omit recommendation badges
+unless the host requires them. If additional actionable
+choices exist, state `<N> additional actionable choices are
+listed above.` immediately below `Next`, before any picker
+or plain-list choices. Never place that count after the
+choices. All work remains visible in the tables even when
+it is absent from the picker.
 
 This skill **determines only**. Do not execute the agent
-lane as part of running it. The lane is a proposal, and the
-operator authorizes it by choosing from the options.
+lane as part of running it. The lane is a proposal the
+operator authorizes from the picker.
 
 ## Turn boundary
 
@@ -210,15 +222,46 @@ the determination is the deliverable the operator asked for,
 so ending the turn on it is correct **when the skill was
 invoked**.
 
-The converse binds harder. If the human lane comes back
-empty, nothing justifies stopping. Report the empty lane in
-one line and return to the task you were already doing —
-this skill still does not execute its own agent lane, but an
-empty human lane is not a reason to hand control back.
+When the operator explicitly asks for this determination,
+return it and stop even if the human lane is empty. Do not
+execute the proposed lane without the operator's selection.
+
+When applying this skill internally before a handoff during
+an already-authorized task, an empty human lane does not
+justify stopping. Continue that task's independent work.
+Human blockers likewise do not suspend unrelated authorized
+work. This internal check never expands authorization.
 
 Do not reach for this skill to manufacture a stopping point
 mid-task. Producing a human lane you did not need is how a
 status summary disguises itself as analysis.
+
+## Host adapters
+
+Use the current host's available structured-choice tool,
+following its schema and mode restrictions. In Claude Code
+this is usually `AskUserQuestion`; in Codex it may be
+`request_user_input` or another exposed input tool. Do not
+assume a picker is always available or unavailable, and do
+not switch modes merely to obtain one. Respect required
+option counts and label conventions without adding filler.
+
+If there is only one actionable choice, or the tool cannot
+represent the choices faithfully, use a plain list under
+`Next`, with one ID-labelled option per line. The same
+fallback applies to noninteractive runs. A picker selection
+authorizes only that choice and its necessary preparation;
+tool approval rules still apply.
+
+For an interactive login, give the literal command. In
+Claude Code, suggest its `!`-prefixed form when shell capture
+is supported; elsewhere ask the operator to run it in their
+terminal and report the result. Never ask for secrets.
+
+Host policy and current permissions take precedence over
+this skill. A tool's existence alone does not authorize an
+action; its preconditions include scope, permissions, and
+the operator's existing authorization.
 
 ## Related skills
 

@@ -1,0 +1,18 @@
+{
+  "name": "trycopilotai-what-next",
+  "owner": {
+    "name": "trycopilot.ai"
+  },
+  "plugins": [
+    {
+      "name": "what-next",
+      "source": "./",
+      "description": "Split open work into agent and human lanes with consistent action IDs, concrete tool calls, and evidence for each human gap.",
+      "version": "1.0.0",
+      "author": {
+        "name": "trycopilot.ai"
+      },
+      "license": "MIT"
+    }
+  ]
+}

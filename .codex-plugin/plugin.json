@@ -1,7 +1,7 @@
 {
   "name": "what-next",
-  "version": "0.1.4",
-  "description": "Split a thread's open work into what an agent can run now and what only you can do, proving each human item against six capability gaps before it lands there.",
+  "version": "1.0.0",
+  "description": "Split open work into agent and human lanes with consistent action IDs, concrete tool calls, and evidence for each human gap.",
   "author": {
     "name": "trycopilot.ai"
   },
@@ -18,8 +18,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "What Next",
-    "shortDescription": "Split open work into an agent lane and a human lane",
-    "longDescription": "Enumerate a thread's open items, demote every one that a repo read, a grep, or a build could settle, prove the rest against six capability gaps, and hand back a two-lane table plus a short list of next actions.",
+    "shortDescription": "Split open work into agent and human lanes",
+    "longDescription": "Check open work against bounded discovery and six capability gaps, then return agent and human tables with A1/H1 identifiers and up to four next choices.",
     "developerName": "trycopilot.ai",
     "category": "Developer Tools",
     "capabilities": [
@@ -27,7 +27,7 @@
     ],
     "websiteURL": "https://github.com/trycopilotai/what-next",
     "defaultPrompt": [
-      "Split this thread's open work into what you can run now and what needs me."
+      "Use $what-next to split this thread's open work into agent and human lanes."
     ]
   }
 }

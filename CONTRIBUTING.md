@@ -1,7 +1,7 @@
 # Contributing
 
-This repository is one skill file, a README, and one
-recorded run. The only code is the test suite and the asset
+This repository contains one canonical skill, documentation,
+a historical record, and synthetic client runs. The only code is the test suite and the asset
 builder — no product code — and the suite asserts on README
 prose. Read that part before you edit anything.
 
@@ -11,7 +11,7 @@ prose. Read that part before you edit anything.
 make check
 ```
 
-That is `tests/test_integrations.py`, and CI runs it on
+That is unittest discovery under `tests/`, and CI runs it on
 every pull request across Python 3.11 and 3.13. It needs
 `python3` and `git`, and it needs a real clone — several
 assertions read `git ls-files` and `git log --all`, so a
@@ -60,7 +60,7 @@ Open an issue for any of these.
   something in the human lane that an agent could have
   settled, or the reverse. Paste the thread's open items and
   what the skill returned.
-- **An independent run.** The one recorded run is the skill
+- **An independent run.** The historical recorded run is the skill
   applied to this repository's own release thread by the
   agent that built it. A run on an ordinary bug-fix or
   review thread, by anyone else, is the single most valuable

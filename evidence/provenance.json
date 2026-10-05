@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_commit": "0407a19ea701a87b9175bdd60560424265a3631b",
+  "source_visibility": "private",
+  "source_identity": "Retained in the operator's external origin ledger, not disclosed here.",
+  "workflow": {
+    "repository": "https://github.com/trycopilotai/open-source-skill-creator",
+    "commit": "8f57d1d3f09e60bceee2f121202d5577d5b6f884",
+    "mode": "append-only update to an existing repository",
+    "creation_controller": "not invoked; no creation-only transaction is claimed"
+  },
+  "carry": [
+    {"surface": "skills/what-next/SKILL.md", "decision": "rewrite", "reason": "Port output and adapter rules; retain bounded discovery, generic host example, and recorded human checks; exclude private host examples."},
+    {"surface": "skills/what-next/agents/openai.yaml", "decision": "copy", "reason": "Neutral host interface strings."},
+    {"surface": "plugin.json and host manifests", "decision": "rewrite", "reason": "Retain org identity, MIT license, and metadata; match v1.0.0 and canonical layout."},
+    {"surface": "README.md", "decision": "rewrite", "reason": "Retain useful org install and evidence adaptations; update contract, host routes, and release pin."},
+    {"surface": "source license and source local catalogues", "decision": "exclude", "reason": "Preserve the org license and author org catalogues separately."}
+  ],
+  "history": "Existing commits, repository identity, v0.1.4 tag, and historical transcript are preserved."
+}
