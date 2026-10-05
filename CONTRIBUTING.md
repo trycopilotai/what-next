@@ -50,12 +50,28 @@ columns. To run it locally:
 ```sh
 git clone --depth 1 --branch v0.1.7 \
   https://github.com/trycopilotai/lint /tmp/lint
+test "$(git -C /tmp/lint rev-parse HEAD)" = \
+  7856512a84d96ff796cc10975e219b5b2a0836f3
 python3 /tmp/lint/lint.py --cwd . --language markdown --read-only
 ```
 
 ## What is most useful
 
 Open an issue for any of these.
+
+Two tracked follow-ups are
+[a real-world run](https://github.com/trycopilotai/what-next/issues/1)
+(`help wanted`) and
+[native picker rendering](https://github.com/trycopilotai/what-next/issues/2)
+(`bug`). Do not share secrets or private identifiers in a
+run.
+
+Rebuild the labelled demo with
+`uv run --python 3.13 --with Pillow==11.3.0 assets/build_demo.py`.
+Add `--check` for a byte-for-byte comparison. The social
+card is rebuilt separately with `python3 assets/build.py`
+using Chrome or Chromium. The test suite itself needs
+neither.
 
 - **A run where the split was wrong.** The gate putting
   something in the human lane that an agent could have

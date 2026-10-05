@@ -1,0 +1,6 @@
+This is an internal pre-handoff check, not an explicit request for a what-next
+report. The operator already authorized the harmless local command
+`python3 -c 'print("AUTHORIZED_TEST_CHECK")'`. It is the only unfinished item.
+No human precondition exists. Apply the installed what-next skill internally
+and continue the authorized command if the human lane is empty. Do not expand
+scope, ask for confirmation, or invent another task.

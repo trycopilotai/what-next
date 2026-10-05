@@ -6,8 +6,8 @@ makes an item earn the human lane: five sources must fail to
 resolve it first, and it must then map to one of exactly six
 capability gaps.
 
-In the historical recorded run, two of six human items were
-demoted.
+Historical record (edited): In the recorded run, two of six
+human items were demoted.
 
 Each demotion names the source that settled it, and the run
 is in [`evidence/`](evidence/). That historical run is on
@@ -26,7 +26,7 @@ lane — that lane is a proposal you authorize.
 ![Reconstructed synthetic fixture run](assets/demo.gif)
 
 This looping reconstruction derives its rows from the
-[Codex output](evidence/transcripts/2026-10-05-codex-mixed.md),
+[Codex output](evidence/transcripts/2026-10-05-codex-mixed.txt),
 not a screen capture. For reduced motion, open the
 [static poster](assets/demo-poster.png).
 
@@ -262,6 +262,19 @@ files are unchanged final messages from actual CLI sessions;
 the manifest identifies the input commit, skill hash, client
 version, model, invocation, and output hash. Noninteractive
 runs exercise the plain-list fallback, not a native picker.
+
+Interactive Claude Code 2.1.289 did open an ID-labelled
+native picker, but omitted the tables beforehand. That is a
+[known limitation](https://github.com/trycopilotai/what-next/issues/2),
+not a passed native table-order test. The adapter permits
+full-report text fallback when a host cannot show the lanes
+first. The selected, edited tool-input record is in
+[`evidence/native-picker.json`](evidence/native-picker.json).
+
+Heading levels and punctuation vary between the captured
+outputs. Tests enforce the lane order, exact columns, IDs,
+references, preparation facts and choices; they do not claim
+model responses are a deterministic Markdown renderer.
 
 **The protocol has moved since the historical run.** The
 output contract has gained three rules since the recorded

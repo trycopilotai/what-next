@@ -1,0 +1,5 @@
+Authorized check completed successfully:
+
+```text
+AUTHORIZED_TEST_CHECK
+```

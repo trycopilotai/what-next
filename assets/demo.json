@@ -1,0 +1,22 @@
+{
+  "kind": "abridged reconstruction of a synthetic fixture",
+  "source": "evidence/transcripts/2026-10-05-codex-mixed.txt",
+  "source_sha256": "b6e716db775c56ac4785e6e67259767acab860c3e954ff2123aa80d7add858c1",
+  "builder_sha256": "72e110f0db15fa147147a9252e836b708e33eefe4b6fa72e1fd654ff23e43b68",
+  "dependency": "Pillow==11.3.0",
+  "canvas": [
+    1500,
+    1180
+  ],
+  "cumulative_visible_lines": [
+    2,
+    9,
+    12,
+    18
+  ],
+  "loop": 0,
+  "assets": {
+    "demo.gif": "7706dfe2048b09139470fee400e21539857bf0efa18a55e4d82dd542eea18f5d",
+    "demo-poster.png": "2e928b150e74565a66f7582fb7db412bc9e2b0db10646c156e0aca678124b2b9"
+  }
+}

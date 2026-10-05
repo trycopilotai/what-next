@@ -1,0 +1,26 @@
+## Agent lane — proposed, not started
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run offline packaging tests | `python3 -m unittest discover -s tests` | independent | Command and authorization supplied |
+| A2 | Draft release notes | `apply_patch release-notes.md` | independent | Notes are confirmed absent; version resolved from supplied `release.json` as `1.0.0` |
+| A3 | Check link validity | `python3 scripts/check_links.py` | independent | Command supplied; no missing preconditions |
+| A4 | Check generated catalogue | `python3 scripts/catalogue.py --check` | independent | Command supplied; no missing preconditions |
+| A5 | Run documentation spelling check | `python3 scripts/spelling.py` | independent | Command supplied; no missing preconditions |
+| A6 | Upload the built release package | `gh release upload v1.0.0 dist/package.zip --repo example/widget` | blocked on H1 | Upload is explicitly authorized, but `gh auth status` reports no login |
+
+## Human lane
+
+| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1 | Run `gh auth login` interactively and report when it succeeds | Interactive credential | Upload package, tag, repository, and command are already specified | A6 | Supplied authentication check says `not logged in`; login requires interactive credential entry |
+| H2 | Choose platform X or platform Y based on which audience matters more | Private judgment | Comparison supplied: maintenance costs are equal; only audience preference remains | None | Supplied evidence says only the operator knows the audience priority; no files, history, accounts, or web lookup can resolve it |
+
+## Next
+
+3 additional actionable choices are listed above.
+
+- H1: Sign in with `gh auth login`
+- A1: Run packaging tests
+- A2: Draft release notes
+- H2: Choose platform X or Y

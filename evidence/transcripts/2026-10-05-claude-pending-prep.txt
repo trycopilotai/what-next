@@ -1,0 +1,17 @@
+## Agent lane (proposed, not started)
+
+| ID  | Proposed action | Next tool/command | State | Basis |
+| --- | --------------- | ----------------- | ----- | ----- |
+| A1  | Write the announcement for version 1.0.0 to `announcement.md` | `Write` → `announcement.md` | independent | The facts and destination are already supplied. The operator authorized preparing an announcement. Not written yet. |
+| A2  | Publish the announcement | `python3 scripts/publish.py announcement.md` | blocked on H1 | Publishing isn't authorized yet. It also needs A1's draft to exist. |
+
+## Human lane
+
+| ID  | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --------------- | -------- | -------- | -------- | ----- |
+| H1  | Authorize publishing `announcement.md` | Policy-barred outward action (gap 3) | None completed; pending: A1 | A2 | No host policy was supplied, so I applied the skill's default five-verb rule. "Publishing" is one of those five verbs. Sources checked: the facts you supplied say publishing isn't authorized. The repo, git, artifact and web checks don't apply because you said no other task sources exist. |
+
+## Next
+
+- A1: Draft `announcement.md`
+- H1: Authorize publishing

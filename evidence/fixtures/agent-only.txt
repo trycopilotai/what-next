@@ -1,0 +1,7 @@
+The operator explicitly asks for a what-next determination only. The sole open
+item is to run `python3 -m unittest discover -s tests`; the operator authorized
+local tests already, and the supplied task evidence confirms the tests exist.
+No credentials, access, policy, or preference is missing. Use the installed
+skill, use its plain list fallback in this noninteractive run, and do not
+execute the proposed action. Return the determination as the deliverable.
+Do not include local absolute paths or unrelated environment identifiers.

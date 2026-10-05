@@ -1,0 +1,30 @@
+# Synthetic task state
+
+The operator previously authorized preparing a release and running local tests.
+This invocation only asks for a what-next determination; do not perform any of
+the listed work. These statements are the complete available task evidence.
+
+Open work:
+- Run the offline packaging tests with `python3 -m unittest discover -s tests`.
+- Draft release notes in `release-notes.md`; this has not been done yet.
+- Upload the already-built release package with
+  `gh release upload v1.0.0 dist/package.zip --repo example/widget` after a login.
+  This upload was explicitly authorized and has no dependency on the platform
+  choice below. `gh auth status` already returned
+  `not logged in`; the operator must run `gh auth login` interactively first.
+- Choose between including support for platform X or platform Y in a later
+  release. Both have the
+  same maintenance cost; only the operator knows which audience matters more.
+- The version question is settled: `release.json` in the supplied artifact says
+  `{"version":"1.0.0"}`. Do not ask the operator to choose a version.
+- Check link validity with `python3 scripts/check_links.py`.
+- Check the generated catalogue with `python3 scripts/catalogue.py --check`.
+- Run the documentation spelling check with `python3 scripts/spelling.py`.
+
+No web lookup can determine whether the operator will sign in or which audience
+they prefer. No other files, accounts, or task history are available for this
+synthetic scenario. Ignore the release workflow that is evaluating this scenario.
+
+Use the installed what-next skill to report the lanes and next choices. Use the
+plain text choice fallback in this noninteractive test. Do not execute proposed
+actions, create output files, or make any external changes.

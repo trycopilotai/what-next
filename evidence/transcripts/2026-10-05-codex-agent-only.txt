@@ -1,0 +1,13 @@
+### Agent lane — proposed, not started
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run the test suite | `python3 -m unittest discover -s tests` | independent | Tests exist, and local test execution is already authorized. |
+
+### Human lane
+
+None
+
+### Next
+
+- A1: Run the test suite

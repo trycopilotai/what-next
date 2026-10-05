@@ -351,8 +351,8 @@ class TestPluginManifests(unittest.TestCase):
                 self.assertEqual(" ".join(expected.split()), fields[key])
 
     def test_store_copy_never_promises_a_picker(self):
-        """SKILL.md says Codex has no picker and falls back to a
-        plain list. Store copy cannot qualify the claim in the
+        """Picker availability depends on host and mode.
+        Store copy cannot qualify the claim in the
         space it has, so it must not make it — the Codex
         longDescription promised one and no test caught it."""
         for name in (".codex-plugin/plugin.json", ".claude-plugin/plugin.json"):
@@ -361,7 +361,7 @@ class TestPluginManifests(unittest.TestCase):
 
     def test_prose_mentions_a_picker_only_with_its_fallback(self):
         """Longer prose may name the picker, but only alongside
-        the host that does not have one."""
+        the text fallback."""
         for name in ("README.md", "SECURITY.md"):
             text = (ROOT / name).read_text().lower()
             with self.subTest(surface=name):
@@ -590,7 +590,7 @@ class TestEvidence(unittest.TestCase):
         )
         block = demotion_block(transcript)
         demoted = len(re.findall(r'^- "', block, re.M))
-        readme = (ROOT / "README.md").read_text()
+        readme = " ".join((ROOT / "README.md").read_text().split())
 
         total = kept + demoted
         self.assertIn(demoted, NUMBERS, f"unmapped demotion count {demoted}")

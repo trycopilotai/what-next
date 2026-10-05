@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_commit": "9b4b396e2412d4cc2c9070c0a0d3efa3cdd6b3f3",
+  "workflow_commit": "8f57d1d3f09e60bceee2f121202d5577d5b6f884",
+  "lint": {
+    "repository": "https://github.com/trycopilotai/lint",
+    "ref": "refs/tags/v0.1.7",
+    "tag_object": "db4807fc428cf5696fa5d6725ea048a9569613a6",
+    "commit": "7856512a84d96ff796cc10975e219b5b2a0836f3",
+    "execution_pin": ".github/workflows/lint.yml",
+    "vendored": false,
+    "note": "Build-only external checkout, not a bundled runtime dependency; exact resolution receipt retained in the external release audit."
+  },
+  "github_actions": {
+    "actions/checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "actions/setup-python": "5fda3b95a4ea91299a34e894583c3862153e4b97"
+  },
+  "asset_build": {"package": "Pillow", "version": "11.3.0", "runtime": "Python 3.13", "purpose": "Rebuild the demo; not required to use the skill or run packaging tests."},
+  "client_evidence": {"Claude Code": "2.1.289", "Codex CLI": "0.160.0"}
+}

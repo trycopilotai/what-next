@@ -22,17 +22,13 @@ jobs:
         with:
           path: repo
 
-      # The linter is a separate public repository. This is a
-      # TAG, not a SHA, and the comment above applies to it too:
-      # trycopilotai/lint can move v0.1.7. That is accepted
-      # deliberately — the linter is a first-party repository and
-      # a formatting check is not a supply-chain boundary in the
-      # way a running action is. Pin a SHA here if that stops
-      # being true.
+      # Exact peeled commit of lint v0.1.7. The dependency
+      # record binds the tag resolution; a mutable tag is not
+      # used as an execution pin.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: trycopilotai/lint
-          ref: v0.1.7
+          ref: 7856512a84d96ff796cc10975e219b5b2a0836f3
           path: lint
 
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7

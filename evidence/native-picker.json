@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-05",
+  "client": "Claude Code 2.1.289",
+  "model": "claude-opus-5-5",
+  "source_commit": "125858480cbfca26e1ecd19717dfd378ae778a89",
+  "scope": "Selected tool-input fields from an interactive synthetic-fixture run; not a complete transcript or screen recording.",
+  "edited": true,
+  "raw_log_sha256": "cb3e6a4e56cd8bb7626314c9367105d9ec7f6e966c04c8a3e7c21cbcbf1b2e34",
+  "tool": "AskUserQuestion",
+  "input": {
+    "questions": [
+      {
+        "question": "Which next action should proceed?",
+        "header": "Next",
+        "multiSelect": false,
+        "options": [
+          {
+            "label": "A1: Run unittest",
+            "description": "Run `python3 -m unittest` offline. This doesn't depend on H1."
+          },
+          {
+            "label": "H1: Choose red or blue",
+            "description": "Tell me your preference between red and blue. Use Other to type it."
+          }
+        ]
+      }
+    ]
+  },
+  "result": "canceled; no choice authorized",
+  "full_table_order_passed": false,
+  "finding": "The picker opened with correct A1/H1 labels, but a narrative summary replaced the two tables before it. The final adapter allows full-report text fallback for hosts unable to display the report first.",
+  "issue": "https://github.com/trycopilotai/what-next/issues/2"
+}

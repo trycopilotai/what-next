@@ -4,13 +4,13 @@
   "input_commit": "1912bd27d90dc4f312a85046e89baa322de5b0fd",
   "protocol": {
     "path": "skills/what-next/SKILL.md",
-    "sha256": "9610aef5508bd0e9f55ee99845f081d3b631fcd973a580d7af8ba6c34a5eff0c",
-    "note": "This is the CURRENT protocol, not the text the run of 2026-08-20 executed. The protocol has been revised since, in six ways: the worked example was rewritten to remove a private repository; the demotion gate was given an explicit bound; gap type 3 gained a no-policy fallback; the output contract gained a `checked:` field for human-lane items; it gained a required closing options list; and it gained a `Demoted on the gate` block. The last three are the ones that decide how to read the transcript: it satisfies the demotion block and falls short of the other two \u2014 see the Contract note in the transcript header. The text as it stood at capture time is not shipped because it contained the private material the rewrite removed. Read this hash as 'the protocol this repository ships', never as 'the protocol that produced the transcript'.",
+    "sha256": "972e73cbc62028ed41d59952995012f3f6c78d693a27b1c07d9d4574cbb9bf27",
+    "note": "This is the CURRENT protocol, not the text the run of 2026-08-20 executed. The protocol has been revised since, in six ways: the worked example was rewritten to remove a private repository; the demotion gate was given an explicit bound; gap type 3 gained a no-policy fallback; the output contract gained a `checked:` field for human-lane items; it gained a required closing options list; and it gained a `Demoted on the gate` block. The last three are the ones that decide how to read the transcript: it satisfies the demotion block and falls short of the other two \u2014 see the Contract note in the transcript header. The text as it stood at capture time is not shipped because it contained the private material the rewrite removed. Read this hash as 'the protocol this repository ships', never as 'the protocol that produced the transcript'. The v1.0.0 update replaces the checked field and separate demotion block with fixed Basis-bearing tables, adds A IDs, empty-lane markers and host adapters. The historical transcript remains unchanged and is not a v1.0.0 behavioral run.",
     "current_at_capture": false
   },
   "interface": {
     "path": "skills/what-next/agents/openai.yaml",
-    "sha256": "bfafadc62ad1e10abcea146b0490d7c6bb03209ff629a90c34e43c242b48b4cb"
+    "sha256": "cba260d3e16a6ba7febe5a98c44b700897f0b7b15c392e4281a303b1be23e0c0"
   },
   "agent": {
     "product": "Claude Code",

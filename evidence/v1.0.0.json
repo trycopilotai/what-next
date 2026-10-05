@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "measurements": "No benchmark, accuracy rate, or independent real-world performance measurement.",
+  "runs": [
+    {
+      "id": "codex-mixed",
+      "scenario": "mixed",
+      "date": "2026-10-05",
+      "input_kind": "synthetic fixture",
+      "input_commit": "2b41fdd4447f94f3cf0d748b5ff7b719c2bca426",
+      "skill_sha256": "972e73cbc62028ed41d59952995012f3f6c78d693a27b1c07d9d4574cbb9bf27",
+      "client": {
+        "product": "Codex CLI",
+        "version": "0.160.0",
+        "model": "gpt-5.6-sol (explicit CLI argument)"
+      },
+      "invocation": "$what-next",
+      "input": {
+        "path": "evidence/fixtures/mixed.txt",
+        "sha256": "784ef02f2cfb5aad7daae2f222c530f96e84a599ee7f3ad99c9a32281535455d"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-05-codex-mixed.txt",
+        "sha256": "b6e716db775c56ac4785e6e67259767acab860c3e954ff2123aa80d7add858c1",
+        "edited": false
+      },
+      "capture": "Unchanged final message extracted from the real CLI JSON stream; full raw logs retained privately because they contain environment paths and session metadata.",
+      "raw_stdout_sha256": "42d7ca8c3b1635feb6462ddee3c13b7bac35ad25bae3fe810a5050410eafd33e",
+      "raw_stderr_sha256": "7d648c6eaeb5932d63bceb8033cbf4f317041e543b6a672a0b7bad50f25b79b3",
+      "elapsed_seconds": 17.8,
+      "exit_code": 0,
+      "mode": "noninteractive; text-choice fallback",
+      "independent_evaluation": false
+    },
+    {
+      "id": "claude-mixed",
+      "scenario": "mixed",
+      "date": "2026-10-05",
+      "input_kind": "synthetic fixture",
+      "input_commit": "2b41fdd4447f94f3cf0d748b5ff7b719c2bca426",
+      "skill_sha256": "972e73cbc62028ed41d59952995012f3f6c78d693a27b1c07d9d4574cbb9bf27",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.289",
+        "model": "claude-opus-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "input": {
+        "path": "evidence/fixtures/mixed.txt",
+        "sha256": "784ef02f2cfb5aad7daae2f222c530f96e84a599ee7f3ad99c9a32281535455d"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-05-claude-mixed.txt",
+        "sha256": "b83e355748e1d2b106381a758f10415d1e616edf2044b9c6f6e51bb3102367f9",
+        "edited": false
+      },
+      "capture": "Unchanged final message extracted from the real CLI JSON stream; full raw logs retained privately because they contain environment paths and session metadata.",
+      "raw_stdout_sha256": "cf5e2a7b1123d88110d4c512667f1effb7005c672b8052bd27ad3cec192b5cc2",
+      "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_seconds": 17.55,
+      "exit_code": 0,
+      "mode": "noninteractive; text-choice fallback",
+      "independent_evaluation": false
+    },
+    {
+      "id": "codex-agent-only",
+      "scenario": "agent-only",
+      "date": "2026-10-05",
+      "input_kind": "synthetic fixture",
+      "input_commit": "2b41fdd4447f94f3cf0d748b5ff7b719c2bca426",
+      "skill_sha256": "972e73cbc62028ed41d59952995012f3f6c78d693a27b1c07d9d4574cbb9bf27",
+      "client": {
+        "product": "Codex CLI",
+        "version": "0.160.0",
+        "model": "gpt-5.6-sol (explicit CLI argument)"
+      },
+      "invocation": "$what-next",
+      "input": {
+        "path": "evidence/fixtures/agent-only.txt",
+        "sha256": "7922ba5e25ba78aaad8a85d10b83c434cfbc8748a11794d9588649d012bdb5a1"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-05-codex-agent-only.txt",
+        "sha256": "80b494a6d0f5d49f1b5930eb6a3bb8fa7a40a4c7c904cb2986103e7b375c518e",
+        "edited": false
+      },
+      "capture": "Unchanged final message extracted from the real CLI JSON stream; full raw logs retained privately because they contain environment paths and session metadata.",
+      "raw_stdout_sha256": "56022c7e4e4ad369babbc20e4c9fbc3377915f28dd615e5836433c99a68273e9",
+      "raw_stderr_sha256": "33e1cb0a1f35aff2d61f1295b82708e283a95a1e139ba4337219ca9ba7e96836",
+      "elapsed_seconds": 6.749,
+      "exit_code": 0,
+      "mode": "noninteractive; text-choice fallback",
+      "independent_evaluation": false
+    },
+    {
+      "id": "claude-empty",
+      "scenario": "empty",
+      "date": "2026-10-05",
+      "input_kind": "synthetic fixture",
+      "input_commit": "2b41fdd4447f94f3cf0d748b5ff7b719c2bca426",
+      "skill_sha256": "972e73cbc62028ed41d59952995012f3f6c78d693a27b1c07d9d4574cbb9bf27",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.289",
+        "model": "claude-opus-5-5"
+      },
+      "invocation": "/what-next",
+      "input": {
+        "path": "evidence/fixtures/empty.txt",
+        "sha256": "b2b6e29d82729b2ed2f6c28b63b137b9c439873a4197546ae3c85dd7f313a40e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-05-claude-empty.txt",
+        "sha256": "0a4619ae26b17d0a7f9fdb28dd42e874259c3c55ec6ed152905849f736ea67cf",
+        "edited": false
+      },
+      "capture": "Unchanged final message extracted from the real CLI JSON stream; full raw logs retained privately because they contain environment paths and session metadata.",
+      "raw_stdout_sha256": "c439c55ce665392ab5f6933908b361730e8e565779206e3d7e403523433121a0",
+      "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_seconds": 3.434,
+      "exit_code": 0,
+      "mode": "noninteractive; text-choice fallback",
+      "independent_evaluation": false
+    },
+    {
+      "id": "claude-pending-prep",
+      "scenario": "pending-prep",
+      "date": "2026-10-05",
+      "input_kind": "synthetic fixture",
+      "input_commit": "2b41fdd4447f94f3cf0d748b5ff7b719c2bca426",
+      "skill_sha256": "972e73cbc62028ed41d59952995012f3f6c78d693a27b1c07d9d4574cbb9bf27",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.289",
+        "model": "claude-opus-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "input": {
+        "path": "evidence/fixtures/pending-prep.txt",
+        "sha256": "b7ae91439840aabb562018c3ed5076d4eda4c523677ee11083da0148545f5b56"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-05-claude-pending-prep.txt",
+        "sha256": "7b284dbfc1869723bf03d68e75175852e794c446ab4da7a995eb34bb6d09b537",
+        "edited": false
+      },
+      "capture": "Unchanged final message extracted from the real CLI JSON stream; full raw logs retained privately because they contain environment paths and session metadata.",
+      "raw_stdout_sha256": "5012334246a835630350686ed8cc3059c772b95c2c642f2015014aad9d6c25fe",
+      "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_seconds": 11.068,
+      "exit_code": 0,
+      "mode": "noninteractive; text-choice fallback",
+      "independent_evaluation": false
+    },
+    {
+      "id": "codex-internal-check",
+      "scenario": "internal-check",
+      "date": "2026-10-05",
+      "input_kind": "synthetic fixture",
+      "input_commit": "2b41fdd4447f94f3cf0d748b5ff7b719c2bca426",
+      "skill_sha256": "972e73cbc62028ed41d59952995012f3f6c78d693a27b1c07d9d4574cbb9bf27",
+      "client": {
+        "product": "Codex CLI",
+        "version": "0.160.0",
+        "model": "gpt-5.6-sol (explicit CLI argument)"
+      },
+      "invocation": "$what-next",
+      "input": {
+        "path": "evidence/fixtures/internal-check.txt",
+        "sha256": "1bb10d6150a7f37d90f92ccb98e64deea148183ec4872a1768290081333ff111"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-05-codex-internal-check.txt",
+        "sha256": "53b7b5faaa52da6468548888c2389a21c4bab66abd39a6b1170f8061d4c13f3b",
+        "edited": false
+      },
+      "capture": "Unchanged final message extracted from the real CLI JSON stream; full raw logs retained privately because they contain environment paths and session metadata.",
+      "raw_stdout_sha256": "5dcabb10b8a7e20d8607317756732d0809c14d032fc27118e2de3058117e594f",
+      "raw_stderr_sha256": "879591ee4fd16d30a435afb599f9823435ce1ccab2b4a4d958ee1f70dd5fabb8",
+      "elapsed_seconds": 8.84,
+      "exit_code": 0,
+      "mode": "noninteractive; text-choice fallback",
+      "independent_evaluation": false,
+      "execution": {
+        "path": "evidence/transcripts/2026-10-05-codex-internal-execution.json",
+        "sha256": "41695652f2381acc707f97c0657888bb2cfffcfd9a296abe8e13934e1556245a",
+        "edited": true,
+        "note": "Selected command/exit/output fields only; IDs and other runtime metadata omitted."
+      }
+    }
+  ],
+  "input_commit_note": "The exact committed protocol and interface supplied to each fresh session. Subsequent changes add evidence and documentation, not new skill instructions."
+}

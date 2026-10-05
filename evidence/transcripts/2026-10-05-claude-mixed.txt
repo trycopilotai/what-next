@@ -1,0 +1,26 @@
+### Agent lane — proposed, not started
+
+| ID  | Proposed action                      | Next tool/command                                                   | State         | Basis                                                                                                                  |
+| --- | ------------------------------------ | ------------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| A1  | Run the offline packaging tests      | `python3 -m unittest discover -s tests`                             | independent   | Thread: you already authorized local tests, and they run offline                                                      |
+| A2  | Draft the release notes for v1.0.0   | `Write` → `release-notes.md`                                        | independent   | Thread: you authorized release prep. The version is settled as 1.0.0 by `release.json` in the artifact                |
+| A3  | Check link validity                  | `python3 scripts/check_links.py`                                    | independent   | Thread: this is a local check under the release-prep authorization                                                    |
+| A4  | Check the generated catalogue        | `python3 scripts/catalogue.py --check`                              | independent   | Thread: this is a local check under the release-prep authorization                                                    |
+| A5  | Run the documentation spelling check | `python3 scripts/spelling.py`                                       | independent   | Thread: this is a local check under the release-prep authorization                                                    |
+| A6  | Upload the built release package     | `gh release upload v1.0.0 dist/package.zip --repo example/widget`   | blocked on H1 | Thread: the upload is explicitly authorized, so it isn't a gap type 3 item. `gh auth status` returned `not logged in` |
+
+### Human lane
+
+| ID  | Needed from you                                                            | Gap type                 | Prepared                                                                                               | Unblocks | Basis                                                                                                                                                                              |
+| --- | -------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| H1  | Run `! gh auth login` and finish the interactive sign-in                   | Interactive credential   | The upload command (A6) is already written out. `gh auth status` already shows `not logged in`        | A6       | Thread: login must be done interactively. Repo, artifact and git: n/a, none available. Web: n/a, a lookup can't sign you in. Policy: you explicitly authorized the upload        |
+| H2  | Say whether a later release should support platform X or platform Y        | Private judgment         | Both options have the same maintenance cost, so the choice comes down to which audience matters more | None     | Thread: only you know which audience matters more. Repo, artifact and git: n/a, none available. Web: n/a, a lookup can't tell your audience preference                         |
+
+### Next
+
+3 additional actionable choices are listed above.
+
+- H1: Sign in with `! gh auth login`
+- A1: Run the packaging tests
+- A2: Draft the release notes
+- A3: Check the links

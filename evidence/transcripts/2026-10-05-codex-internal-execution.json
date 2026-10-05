@@ -1,0 +1,7 @@
+[
+  {
+    "command": "/bin/zsh -lc \"python3 -c 'print(\\\"AUTHORIZED_TEST_CHECK\\\")'\"",
+    "exit_code": 0,
+    "aggregated_output": "AUTHORIZED_TEST_CHECK\n"
+  }
+]
