@@ -2,9 +2,9 @@
 
 This repository contains one canonical skill, documentation,
 a historical record, and synthetic client runs. The only
-code is the test suite and the asset builder — no product
-code — and the suite asserts on README prose. Read that part
-before you edit anything.
+code is the test suites and two asset builders — no product
+runtime — and the suites assert on README prose and recorded
+output. Read that part before you edit anything.
 
 ## Run the checks first
 

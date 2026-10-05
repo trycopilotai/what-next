@@ -270,6 +270,10 @@ not a passed native table-order test. The adapter permits
 full-report text fallback when a host cannot show the lanes
 first. The selected, edited tool-input record is in
 [`evidence/native-picker.json`](evidence/native-picker.json).
+That record uses an earlier private source snapshot, not the
+final org protocol. Its input fixture and skill hash
+identify what was exercised; it does not validate the
+current adapter's native rendering.
 
 Heading levels and punctuation vary between the captured
 outputs. Tests enforce the lane order, exact columns, IDs,

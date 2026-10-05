@@ -1,7 +1,7 @@
 """Packaging contract for the what-next skill repository.
 
-The repository ships no product code — this suite and
-`assets/build.py` are the only programs. What can break is
+The repository ships no product runtime — its programs are
+the test suites and two asset builders. What can break is
 the packaging: the symlink orientation both runtimes rely on, the
 two plugin manifests agreeing with each other, and the Codex
 interface strings agreeing across the manifest and the agent

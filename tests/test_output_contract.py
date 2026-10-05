@@ -121,6 +121,11 @@ class TestBehavioralEvidence(unittest.TestCase):
         self.assertTrue(2 <= len(options) <= 4)
         self.assertTrue(all(re.match(r"[AH]\d+: ", o["label"]) for o in options))
         self.assertEqual("canceled; no choice authorized", record["result"])
+        fixture = record["input_fixture"]
+        self.assertEqual(fixture["sha256"], hashlib.sha256((ROOT / fixture["path"]).read_bytes()).hexdigest())
+        self.assertIs(False, fixture["edited"])
+        self.assertRegex(record["skill_sha256"], r"^[0-9a-f]{64}$")
+        self.assertIn("outside this repository's reachable history", record["input_commit_note"])
 
     def test_provenance_preserves_the_historical_release(self):
         data = subprocess.check_output(["git", "show", "v0.1.4:evidence/transcripts/2026-08-20-release-thread.txt"], cwd=ROOT)
