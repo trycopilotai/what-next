@@ -32,8 +32,9 @@ this skill is that proof.
   are allowed to. See **Turn boundary**.
 - A plan finished and the residue needs routing.
 
-Do not run it on a thread with no open work. Answer the
-question and stop.
+Do not invoke it internally when no open work exists. For an
+explicit invocation with no open work, return both empty
+lanes as `None`, then `Next` with no choices, and stop.
 
 ## The rule that decides the split
 
@@ -123,7 +124,8 @@ Tag every agent-lane item:
 
 - `independent` — runnable right now.
 - `blocked on Hn` — name the human item by ID. If several
-  human actions are required, list them: `blocked on H1, H2`.
+  human actions are required, list them:
+  `blocked on H1, H2`.
 
 This is what makes the split actionable. Without it, one
 human blocker reads as a stop on everything, and the most
@@ -156,18 +158,23 @@ by its `A` ID; never describe it as already done.
 Use these headings and columns in this order. Render the
 tables as Markdown, outside a code fence:
 
+Emit both lanes in an assistant message before invoking a
+picker tool. A picker never replaces the tables. Check the
+headings, columns, IDs, references, and empty-lane markers
+before returning or calling the picker.
+
 ### Agent lane — proposed, not started
 
-| ID | Proposed action | Next tool/command | State | Basis |
-| --- | --- | --- | --- | --- |
-| A1 | <action> | `<concrete call>` | independent | <resolving source or evidence> |
-| A2 | <action after H1> | `<concrete call>` | blocked on H1 | <missing precondition> |
+| ID  | Proposed action   | Next tool/command | State         | Basis                          |
+| --- | ----------------- | ----------------- | ------------- | ------------------------------ |
+| A1  | <action>          | `<concrete call>` | independent   | <resolving source or evidence> |
+| A2  | <action after H1> | `<concrete call>` | blocked on H1 | <missing precondition>         |
 
 ### Human lane
 
-| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
-| --- | --- | --- | --- | --- | --- |
-| H1 | <one action that closes the gap> | <one of the six gaps> | <completed preparation; pending: A1 if applicable> | A2 | <sources checked, result, and policy when relevant> |
+| ID  | Needed from you                  | Gap type              | Prepared                                           | Unblocks | Basis                                               |
+| --- | -------------------------------- | --------------------- | -------------------------------------------------- | -------- | --------------------------------------------------- |
+| H1  | <one action that closes the gap> | <one of the six gaps> | <completed preparation; pending: A1 if applicable> | A2       | <sources checked, result, and policy when relevant> |
 
 Order independent agent items before blocked items. Order
 human items by how many agent items they unblock; preserve
@@ -176,19 +183,19 @@ thread order for ties. Assign contiguous IDs after ordering:
 this report, including dependencies and choices. A later
 report may reclassify work and assign new IDs.
 
-In `Basis`, name evidence that resolves an agent item or
-the checks supporting a human gap. For an inapplicable or
+In `Basis`, name evidence that resolves an agent item or the
+checks supporting a human gap. For an inapplicable or
 unavailable source, say `n/a` and why. A demotion belongs in
 the Agent table with its resolving source; no separate
 demotion block is needed. Use `None` for a field with no
-applicable value. Keep cells concise and escape literal
-`|` characters. If a lane is empty, retain its heading and
-write `None` instead of an empty table. If both are empty,
-do not invent a choice.
+applicable value. Keep cells concise and escape literal `|`
+characters. If a lane is empty, retain its heading and write
+`None` instead of an empty table. If both are empty, do not
+invent a choice.
 
 `Next tool/command` names an actual host tool with its
-target, or a literal shell command. A phrase such as
-"write the notes" is not a tool call. Do not invent command
+target, or a literal shell command. A phrase such as "write
+the notes" is not a tool call. Do not invent command
 arguments or dependencies; if an argument still needs
 discovery, propose that discovery as the next agent action.
 `Prepared` describes work that can precede the human act,
@@ -199,16 +206,17 @@ never the downstream action it unlocks.
 Present 1 to 4 actionable choices drawn from both lanes,
 ordered by how much each unblocks, using the host adapter
 below. Only offer independent agent items or human actions
-that can be performed now. A blocked agent item stays in
-the table until its preconditions hold. Every choice starts
-with its ID, such as `A1: Draft the reply` or `H1: Sign in`.
-Keep labels short and neutral; omit recommendation badges
-unless the host requires them. If additional actionable
-choices exist, state `<N> additional actionable choices are
-listed above.` immediately below `Next`, before any picker
-or plain-list choices. Never place that count after the
-choices. All work remains visible in the tables even when
-it is absent from the picker.
+that can be performed now. A blocked agent item stays in the
+table until its preconditions hold. Every choice starts with
+its ID, such as `A1: Draft the reply` or `H1: Sign in`. Keep
+labels short and neutral; omit recommendation badges unless
+the host requires them. If additional actionable choices
+exist, state
+`<N> additional actionable choices are listed above.`
+immediately below `Next`, before any picker or plain-list
+choices. Never place that count after the choices. All work
+remains visible in the tables even when it is absent from
+the picker.
 
 This skill **determines only**. Do not execute the agent
 lane as part of running it. The lane is a proposal the
@@ -246,17 +254,19 @@ assume a picker is always available or unavailable, and do
 not switch modes merely to obtain one. Respect required
 option counts and label conventions without adding filler.
 
-If there is only one actionable choice, or the tool cannot
-represent the choices faithfully, use a plain list under
+If there is only one actionable choice, the tool cannot
+represent the choices faithfully, or the host cannot show
+the full lane report before the picker, use a plain list under
 `Next`, with one ID-labelled option per line. The same
 fallback applies to noninteractive runs. A picker selection
 authorizes only that choice and its necessary preparation;
 tool approval rules still apply.
 
 For an interactive login, give the literal command. In
-Claude Code, suggest its `!`-prefixed form when shell capture
-is supported; elsewhere ask the operator to run it in their
-terminal and report the result. Never ask for secrets.
+Claude Code, suggest its `!`-prefixed form when shell
+capture is supported; elsewhere ask the operator to run it
+in their terminal and report the result. Never ask for
+secrets.
 
 Host policy and current permissions take precedence over
 this skill. A tool's existence alone does not authorize an

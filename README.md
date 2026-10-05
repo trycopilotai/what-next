@@ -6,7 +6,8 @@ makes an item earn the human lane: five sources must fail to
 resolve it first, and it must then map to one of exactly six
 capability gaps.
 
-In the historical recorded run, two of six human items were demoted.
+In the historical recorded run, two of six human items were
+demoted.
 
 Each demotion names the source that settled it, and the run
 is in [`evidence/`](evidence/). That historical run is on
@@ -37,16 +38,16 @@ there is not.
 
 ### Agent lane — proposed, not started
 
-| ID | Proposed action | Next tool/command | State | Basis |
-| --- | --- | --- | --- | --- |
-| A1 | Run the local tests | `python3 -m unittest` | independent | Thread: tests are ready |
-| A2 | Upload the built archive | `gh release upload v1.0.0 dist/package.zip --repo example/widget` | blocked on H1 | Thread: upload authorized, login missing |
+| ID  | Proposed action          | Next tool/command                                                 | State         | Basis                                    |
+| --- | ------------------------ | ----------------------------------------------------------------- | ------------- | ---------------------------------------- |
+| A1  | Run the local tests      | `python3 -m unittest`                                             | independent   | Thread: tests are ready                  |
+| A2  | Upload the built archive | `gh release upload v1.0.0 dist/package.zip --repo example/widget` | blocked on H1 | Thread: upload authorized, login missing |
 
 ### Human lane
 
-| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
-| --- | --- | --- | --- | --- | --- |
-| H1 | Run `gh auth login` | Interactive credential | Archive built; command supplied | A2 | Thread: authentication check failed; other sources n/a for private login |
+| ID  | Needed from you     | Gap type               | Prepared                        | Unblocks | Basis                                                                    |
+| --- | ------------------- | ---------------------- | ------------------------------- | -------- | ------------------------------------------------------------------------ |
+| H1  | Run `gh auth login` | Interactive credential | Archive built; command supplied | A2       | Thread: authentication check failed; other sources n/a for private login |
 
 ### Next
 
@@ -56,8 +57,8 @@ there is not.
 This is a **synthetic format example**, not a recorded run.
 The actual behavior records are linked below.
 
-Every agent item is `independent` or `blocked on Hn`.
-IDs are used in all dependencies, preparation references,
+Every agent item is `independent` or `blocked on Hn`. IDs
+are used in all dependencies, preparation references,
 unblock cells, and choices. Empty lanes render as `None`.
 Unfinished preparation is proposed as an agent item; it is
 not described as already completed. If more than four
@@ -129,8 +130,7 @@ trap - EXIT
 rm -rf "$install_tmp"
 ```
 
-Or, when this version is registered, alongside the
-other
+Or, when this version is registered, alongside the other
 [trycopilot.ai skills](https://github.com/trycopilotai/skills):
 
 ```text
@@ -209,8 +209,9 @@ codex plugin add what-next@trycopilotai-what-next
 ```
 
 The `v1.0.0` tagged repository carries a portable root
-`plugin.json` plus Claude Code and Codex plugin manifests. Both runtimes load the canonical package
-under `skills/what-next`; `skill/SKILL.md` resolves to that
+`plugin.json` plus Claude Code and Codex plugin manifests.
+Both runtimes load the canonical package under
+`skills/what-next`; `skill/SKILL.md` resolves to that
 package, so the skill content is stored once.
 
 The clone is pinned to a tag rather than to `main`. This
@@ -243,7 +244,9 @@ appear, restart Codex.
   longer obvious what is blocked.
 - A plan finished and the residue needs routing.
 
-Do not run it on a thread with no open work.
+For an explicit invocation with no open work, both lanes are
+`None` and there are no choices. Do not use it internally to
+manufacture a stopping point.
 
 ## Evidence
 
@@ -260,19 +263,19 @@ the manifest identifies the input commit, skill hash, client
 version, model, invocation, and output hash. Noninteractive
 runs exercise the plain-list fallback, not a native picker.
 
-**The protocol has moved since the historical run.** The output
-contract has gained three rules since the recorded run. It
-falls short of two of them — it carries no `checked:` field
-and ends without an options list. The third, a
-`Demoted on the gate` block, the run already satisfies.
-The v1.0.0 contract now replaces that block and field with
-fixed tables and `Basis` cells, adds `A1` IDs, and specifies
-host-native picker constraints and text fallback.
-Those fields were not back-filled — writing them now would
-be inventing what the run did, which is the one thing this
-repository argues against. `evidence/manifest.json` lists
-every revision, and the transcript's header says which rules
-it predates.
+**The protocol has moved since the historical run.** The
+output contract has gained three rules since the recorded
+run. It falls short of two of them — it carries no
+`checked:` field and ends without an options list. The
+third, a `Demoted on the gate` block, the run already
+satisfies. The v1.0.0 contract now replaces that block and
+field with fixed tables and `Basis` cells, adds `A1` IDs,
+and specifies host-native picker constraints and text
+fallback. Those fields were not back-filled — writing them
+now would be inventing what the run did, which is the one
+thing this repository argues against.
+`evidence/manifest.json` lists every revision, and the
+transcript's header says which rules it predates.
 
 **The record is edited, and says so.** The run happened on a
 private thread, so before publication a signing key's path,
@@ -293,26 +296,27 @@ reconstruction. The historical run is not independent: the
 protocol was applied to this project's own release thread by
 the same agent that was building the repository, so it is a
 demonstration that the gate fires, not evidence that the
-split generalises to other threads or other agents. The fresh synthetic runs check a specified fixture, not
-independent real-world task performance. A run on an ordinary
-thread is still the most useful contribution.
+split generalises to other threads or other agents. The
+fresh synthetic runs check a specified fixture, not
+independent real-world task performance. A run on an
+ordinary thread is still the most useful contribution.
 
 ## Release provenance
 
 The v1.0.0 update incorporates the output contract from an
 exact private source commit, recorded in
-[`evidence/provenance.json`](evidence/provenance.json).
-Only selected, audited instructions and interface metadata
-were carried over. Private host-specific examples were not.
-This repository retains its MIT license and existing
-history. It is an append-only update, not a new repository
-or a passed creation-only controller transaction.
+[`evidence/provenance.json`](evidence/provenance.json). Only
+selected, audited instructions and interface metadata were
+carried over. Private host-specific examples were not. This
+repository retains its MIT license and existing history. It
+is an append-only update, not a new repository or a passed
+creation-only controller transaction.
 
 The repository remains private pending explicit publication
-authorization. Tag-pinned installs require repository access.
-The org marketplace entry is pending public publication;
-vendored plugin installs do not establish anonymous access
-to this standalone repository.
+authorization. Tag-pinned installs require repository
+access. The org marketplace entry is pending public
+publication; vendored plugin installs do not establish
+anonymous access to this standalone repository.
 
 ## Contributing
 

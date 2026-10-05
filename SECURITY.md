@@ -4,8 +4,8 @@
 
 This repository is currently private. Authorized
 collaborators can report through its private issue tracker:
-<https://github.com/trycopilotai/what-next/issues/new>
-All repository issues are visible to repository collaborators,
+<https://github.com/trycopilotai/what-next/issues/new> All
+repository issues are visible to repository collaborators,
 not only maintainers. Do not include credentials or secrets.
 
 The future public reporting path is:
@@ -15,17 +15,18 @@ vulnerability reporting is a gate before public visibility;
 do not use a public issue to disclose a vulnerability.
 
 Expect an acknowledgement within seven days. If you have not
-heard back in that window, open a private repository issue saying only
-that you are waiting on a security response — no details.
+heard back in that window, open a private repository issue
+saying only that you are waiting on a security response — no
+details.
 
 ## What is in scope
 
 This repository is mostly prose, but it is not only prose.
 It ships packaging and evidence tests that invoke `git`,
 `assets/build.py`, which launches a headless browser, and a
-demo builder that reads a transcript and writes images — and two README install blocks
-that clone over the network and move directories under
-`$HOME`. All of these are in scope.
+demo builder that reads a transcript and writes images — and
+two README install blocks that clone over the network and
+move directories under `$HOME`. All of these are in scope.
 
 The larger risk is still in what the instructions cause an
 agent to do:
