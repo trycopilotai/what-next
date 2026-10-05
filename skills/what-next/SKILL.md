@@ -256,8 +256,8 @@ option counts and label conventions without adding filler.
 
 If there is only one actionable choice, the tool cannot
 represent the choices faithfully, or the host cannot show
-the full lane report before the picker, use a plain list under
-`Next`, with one ID-labelled option per line. The same
+the full lane report before the picker, use a plain list
+under `Next`, with one ID-labelled option per line. The same
 fallback applies to noninteractive runs. A picker selection
 authorizes only that choice and its necessary preparation;
 tool approval rules still apply.
