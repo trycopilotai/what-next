@@ -5,6 +5,8 @@
   "source_identity": "Retained in the operator's external origin ledger, not disclosed here.",
   "workflow": {
     "repository": "https://github.com/trycopilotai/open-source-skill-creator",
+    "visibility": "private",
+    "disclosure_decision": "Retain this first-party workflow reference as requested release provenance, not as an anonymously accessible install dependency. External audit records are not vendored into the marketplace.",
     "commit": "8f57d1d3f09e60bceee2f121202d5577d5b6f884",
     "mode": "append-only update to an existing repository",
     "creation_controller": "not invoked; no creation-only transaction is claimed"
