@@ -2,22 +2,18 @@
 
 ## Reporting a vulnerability
 
-This repository is currently private. Authorized
-collaborators can report through its private issue tracker:
-<https://github.com/trycopilotai/what-next/issues/new> All
-repository issues are visible to repository collaborators,
-not only maintainers. Do not include credentials or secrets.
-
-The future public reporting path is:
+For public releases, report through GitHub's private
+vulnerability reporting form:
 <https://github.com/trycopilotai/what-next/security/advisories/new>
-It is not currently verified active. Enabling private
-vulnerability reporting is a gate before public visibility;
-do not use a public issue to disclose a vulnerability.
+Private vulnerability reporting is enabled and verified as
+part of public publication; GitHub only offers this feature
+for public repositories. Do not use public issues to
+disclose vulnerabilities, credentials, or secrets.
 
 Expect an acknowledgement within seven days. If you have not
-heard back in that window, open a private repository issue
-saying only that you are waiting on a security response — no
-details.
+heard back in that window, follow up in the same private
+advisory conversation. The seven-day window is a response
+policy, not a measured service-level result.
 
 ## What is in scope
 

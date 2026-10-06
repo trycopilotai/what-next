@@ -329,11 +329,12 @@ repository retains its MIT license and existing history. It
 is an append-only update, not a new repository or a passed
 creation-only controller transaction.
 
-The repository remains private pending explicit publication
-authorization. Tag-pinned installs require repository
-access. The org marketplace entry is pending public
-publication; vendored plugin installs do not establish
-anonymous access to this standalone repository.
+The v1.0.0 tag preserves the documentation from its initial
+private release. The operator has since authorized public
+publication of this org repository. Use this README and
+[`SECURITY.md`](SECURITY.md) for current installation and
+reporting guidance. The private source repository and
+external audit records are not part of that publication.
 
 ## Contributing
 
