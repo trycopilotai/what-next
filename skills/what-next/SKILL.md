@@ -275,14 +275,15 @@ the operator's existing authorization.
 
 ## Related skills
 
-None are published yet; they are named so this skill's
-boundaries are clear. `ask-human-review` builds a visual
-surface for a human item that is a decision. `handoff`
-checkpoints the split when a thread is ending.
-`interview-me` runs substantive decision rounds, where this
-skill's options list is the lightweight menu.
-`address-comments` resolves the markers a review leaves
-behind.
+`handoff` and `address-comments` are published;
+`ask-human-review` and `interview-me` are not yet. All four
+are named so this skill's boundaries are clear.
+`ask-human-review` builds a visual surface for a human item
+that is a decision. `handoff` checkpoints the split when a
+thread is ending. `interview-me` runs substantive decision
+rounds, where this skill's options list is the lightweight
+menu. `address-comments` resolves the markers a review
+leaves behind.
 
 ## Anti-patterns
 
