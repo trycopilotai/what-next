@@ -344,7 +344,7 @@ human-required item that maps to none of the six gaps.
 
 ## License
 
-MIT. See [`LICENSE`](LICENSE).
+MIT license. See [`LICENSE`](LICENSE).
 
 ## Not affiliated with GitHub or GitHub Copilot
 
