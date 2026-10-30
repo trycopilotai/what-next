@@ -1,14 +1,19 @@
 # what-next
 
 Ask an agent what is left and you usually get a list padded
-with questions it could have answered itself. what-next
-makes an item earn the human lane: five sources must fail to
-resolve it first, and it must then map to one of exactly six
-capability gaps.
+with questions it could have answered itself.
+
+---
 
 [![auto-lint-pr](https://github.com/trycopilotai/what-next/actions/workflows/auto-lint-pr.yml/badge.svg)](https://github.com/trycopilotai/what-next/actions/workflows/auto-lint-pr.yml)
 [![check](https://github.com/trycopilotai/what-next/actions/workflows/check.yml/badge.svg)](https://github.com/trycopilotai/what-next/actions/workflows/check.yml)
 [![lint](https://github.com/trycopilotai/what-next/actions/workflows/lint.yml/badge.svg)](https://github.com/trycopilotai/what-next/actions/workflows/lint.yml)
+
+---
+
+what-next makes an item earn the human lane: five sources
+must fail to resolve it first, and it must then map to one
+of exactly six capability gaps.
 
 Historical record (edited): In the recorded run, two of six
 human items were demoted.
