@@ -1,45 +1,30 @@
+# Copy to .github/workflows/lint.yml. Replace both pins with the
+# newest releases: the commit each release tag peels to, with the
+# tag in the trailing comment.
 name: lint
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  markdown:
-    runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu-24.04
     steps:
-      # Both checkouts land in siblings rather than nesting, so
-      # the linter's own Markdown is never part of the tree
-      # being linted.
-      #
-      # Pinned to commit SHAs. Tags are mutable and this
-      # workflow runs on pull requests from forks.
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      # Pinned to commit SHAs. Tags are mutable and this workflow
+      # runs on pull requests from forks.
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: trycopilotai/lint@3c4322bf89aedcd1c5ce5b8cc37c24be63dd09c1 # v0.1.8
         with:
-          path: repo
-
-      # Exact peeled commit of lint v0.1.7. The dependency
-      # record binds the tag resolution; a mutable tag is not
-      # used as an execution pin.
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          repository: trycopilotai/lint
-          ref: 7856512a84d96ff796cc10975e219b5b2a0836f3
-          path: lint
-
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
-        with:
-          python-version: "3.13"
-
-      # Read-only: the job reports drift, it does not rewrite
-      # the tree and push a fixup.
-      - name: Check Markdown formatting
-        run: |
-          python3 lint/lint.py \
-            --cwd repo \
-            --language markdown \
-            --read-only
+          mode: read-only
+          cwd: .
+          docker: "true"
+          paths:
+            "README.md SECURITY.md CONTRIBUTING.md .github
+            tests"
