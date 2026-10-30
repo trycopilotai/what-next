@@ -147,9 +147,7 @@ def transcript_has_checked_field(transcript):
     """
     import re
 
-    return bool(
-        re.search(r"^\s+checked:", human_lane_block(transcript), re.M)
-    )
+    return bool(re.search(r"^\s+checked:", human_lane_block(transcript), re.M))
 
 
 def parse_agent_interface(text):
@@ -385,9 +383,7 @@ class TestLaunchSurface(unittest.TestCase):
 
         blocks = [
             block
-            for block in re.findall(
-                r"```(?:sh|text)\n(.*?)```", self.readme, re.S
-            )
+            for block in re.findall(r"```(?:sh|text)\n(.*?)```", self.readme, re.S)
             if "git clone" in block
         ]
         self.assertEqual(2, len(blocks))
@@ -497,9 +493,7 @@ class TestEvidence(unittest.TestCase):
         ):
             with self.subTest(path=record["path"]):
                 data = (ROOT / record["path"]).read_bytes()
-                self.assertEqual(
-                    record["sha256"], hashlib.sha256(data).hexdigest()
-                )
+                self.assertEqual(record["sha256"], hashlib.sha256(data).hexdigest())
 
     def test_manifest_declares_the_transcript_edited_and_says_how(self):
         """The transcript WAS redacted before publication. An
@@ -585,9 +579,7 @@ class TestEvidence(unittest.TestCase):
         import re
 
         transcript = (ROOT / self.manifest["result"]["path"]).read_text()
-        kept = len(
-            re.findall(r"^H\d+\.", human_lane_block(transcript), re.M)
-        )
+        kept = len(re.findall(r"^H\d+\.", human_lane_block(transcript), re.M))
         block = demotion_block(transcript)
         demoted = len(re.findall(r'^- "', block, re.M))
         readme = " ".join((ROOT / "README.md").read_text().split())
@@ -596,8 +588,7 @@ class TestEvidence(unittest.TestCase):
         self.assertIn(demoted, NUMBERS, f"unmapped demotion count {demoted}")
         self.assertIn(total, NUMBERS, f"unmapped item total {total}")
         self.assertIn(
-            f"{NUMBERS[demoted]} of {NUMBERS[total]} human items "
-            "were demoted",
+            f"{NUMBERS[demoted]} of {NUMBERS[total]} human items " "were demoted",
             readme,
         )
 
@@ -611,15 +602,11 @@ class TestEvidence(unittest.TestCase):
 
         transcript = (ROOT / self.manifest["result"]["path"]).read_text()
         block = demotion_block(transcript)
-        bullets = re.findall(
-            r'^- ".*?"(.*?)(?=^- "|\Z)', block, re.M | re.S
-        )
+        bullets = re.findall(r'^- ".*?"(.*?)(?=^- "|\Z)', block, re.M | re.S)
         # Every bullet in the section must be a quoted, sourced
         # demotion -- an unquoted one would otherwise vanish
         # from both this test and the arithmetic count.
-        self.assertEqual(
-            len(re.findall(r"^- ", block, re.M)), len(bullets)
-        )
+        self.assertEqual(len(re.findall(r"^- ", block, re.M)), len(bullets))
         self.assertTrue(bullets, "no demotion bullets found")
         for index, body in enumerate(bullets):
             with self.subTest(demotion=index):
@@ -706,9 +693,7 @@ class TestSocialPreviewContrast(unittest.TestCase):
         import re
 
         css = (ROOT / "assets" / "social-preview.html").read_text()
-        self.tokens = dict(
-            re.findall(r"--([a-z]+):\s*(#[0-9a-fA-F]{6})", css)
-        )
+        self.tokens = dict(re.findall(r"--([a-z]+):\s*(#[0-9a-fA-F]{6})", css))
 
     @staticmethod
     def _ratio(fg, bg):
@@ -719,9 +704,7 @@ class TestSocialPreviewContrast(unittest.TestCase):
                 v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
                 for v in parts
             ]
-            return (
-                0.2126 * parts[0] + 0.7152 * parts[1] + 0.0722 * parts[2]
-            )
+            return 0.2126 * parts[0] + 0.7152 * parts[1] + 0.0722 * parts[2]
 
         high, low = max(lum(fg), lum(bg)), min(lum(fg), lum(bg))
         return (high + 0.05) / (low + 0.05)

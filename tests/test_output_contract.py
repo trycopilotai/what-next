@@ -17,12 +17,21 @@ def cells(line):
 
 
 def report(text):
-    headings = list(re.finditer(r"^#{2,3} (Agent lane[^\n]*|Human lane|Next)\s*$", text, re.M))
+    headings = list(
+        re.finditer(r"^#{2,3} (Agent lane[^\n]*|Human lane|Next)\s*$", text, re.M)
+    )
     if len(headings) != 3:
         raise AssertionError("expected exactly three ordered headings")
-    if not headings[0][1].startswith("Agent lane") or headings[1][1] != "Human lane" or headings[2][1] != "Next":
+    if (
+        not headings[0][1].startswith("Agent lane")
+        or headings[1][1] != "Human lane"
+        or headings[2][1] != "Next"
+    ):
         raise AssertionError("lane order drift")
-    sections = [text[h.end():headings[i + 1].start() if i < 2 else len(text)] for i, h in enumerate(headings)]
+    sections = [
+        text[h.end() : headings[i + 1].start() if i < 2 else len(text)]
+        for i, h in enumerate(headings)
+    ]
     lanes = []
     for section, columns, prefix in zip(sections, (AGENT, HUMAN), ("A", "H")):
         lines = [line for line in section.splitlines() if line.startswith("|")]
@@ -36,7 +45,9 @@ def report(text):
         rows = [cells(line) for line in lines[2:]]
         if any(len(row) != len(columns) for row in rows):
             raise AssertionError("row width drift")
-        if [row[0] for row in rows] != [f"{prefix}{n}" for n in range(1, len(rows) + 1)]:
+        if [row[0] for row in rows] != [
+            f"{prefix}{n}" for n in range(1, len(rows) + 1)
+        ]:
             raise AssertionError("noncontiguous IDs")
         lanes.append(rows)
     return *lanes, sections[2]
@@ -57,9 +68,19 @@ class TestBehavioralEvidence(unittest.TestCase):
             with self.subTest(run=run["id"]):
                 for field in ("input", "output"):
                     record = run[field]
-                    self.assertEqual(record["sha256"], hashlib.sha256((ROOT / record["path"]).read_bytes()).hexdigest())
-                protocol = subprocess.check_output(["git", "show", run["input_commit"] + ":skills/what-next/SKILL.md"], cwd=ROOT)
-                self.assertEqual(run["skill_sha256"], hashlib.sha256(protocol).hexdigest())
+                    self.assertEqual(
+                        record["sha256"],
+                        hashlib.sha256(
+                            (ROOT / record["path"]).read_bytes()
+                        ).hexdigest(),
+                    )
+                protocol = subprocess.check_output(
+                    ["git", "show", run["input_commit"] + ":skills/what-next/SKILL.md"],
+                    cwd=ROOT,
+                )
+                self.assertEqual(
+                    run["skill_sha256"], hashlib.sha256(protocol).hexdigest()
+                )
                 self.assertIs(False, run["output"]["edited"])
                 self.assertEqual("synthetic fixture", run["input_kind"])
                 self.assertTrue(run["client"]["version"])
@@ -72,19 +93,27 @@ class TestBehavioralEvidence(unittest.TestCase):
                 text = self.output(run)
                 agents, humans, next_section = report(text)
                 self.assertEqual((6, 2), (len(agents), len(humans)))
-                self.assertEqual(["independent"] * 5 + ["blocked on H1"], [r[3] for r in agents])
+                self.assertEqual(
+                    ["independent"] * 5 + ["blocked on H1"], [r[3] for r in agents]
+                )
                 self.assertEqual("A6", humans[0][4])
                 self.assertEqual("None", humans[1][4])
                 self.assertNotIn("version", " ".join(r[1] for r in humans).lower())
                 self.assertIn("1.0.0", agents[1][4])
-                choices = re.findall(r"^\s*(?:- |\d+\. )(?:\*\*)?([AH]\d+)(?:\*\*)?:", next_section, re.M)
+                choices = re.findall(
+                    r"^\s*(?:- |\d+\. )(?:\*\*)?([AH]\d+)(?:\*\*)?:", next_section, re.M
+                )
                 self.assertEqual(4, len(choices))
                 self.assertEqual("H1", choices[0])
                 self.assertNotIn("A6", choices)
                 count = "3 additional actionable choices are listed above."
                 self.assertIn(count, next_section)
-                self.assertLess(next_section.index(count), next_section.index(choices[0]))
-                self.assertNotIn("```", text[:text.index("additional actionable choices")])
+                self.assertLess(
+                    next_section.index(count), next_section.index(choices[0])
+                )
+                self.assertNotIn(
+                    "```", text[: text.index("additional actionable choices")]
+                )
 
     def test_empty_lanes_and_single_choice(self):
         for run in self.runs("agent-only"):
@@ -122,21 +151,44 @@ class TestBehavioralEvidence(unittest.TestCase):
         self.assertTrue(all(re.match(r"[AH]\d+: ", o["label"]) for o in options))
         self.assertEqual("canceled; no choice authorized", record["result"])
         fixture = record["input_fixture"]
-        self.assertEqual(fixture["sha256"], hashlib.sha256((ROOT / fixture["path"]).read_bytes()).hexdigest())
+        self.assertEqual(
+            fixture["sha256"],
+            hashlib.sha256((ROOT / fixture["path"]).read_bytes()).hexdigest(),
+        )
         self.assertIs(False, fixture["edited"])
         self.assertRegex(record["skill_sha256"], r"^[0-9a-f]{64}$")
-        self.assertIn("outside this repository's reachable history", record["input_commit_note"])
+        self.assertIn(
+            "outside this repository's reachable history", record["input_commit_note"]
+        )
 
     def test_provenance_preserves_the_historical_release(self):
-        data = subprocess.check_output(["git", "show", "v0.1.4:evidence/transcripts/2026-08-20-release-thread.txt"], cwd=ROOT)
-        self.assertEqual(data, (ROOT / "evidence/transcripts/2026-08-20-release-thread.txt").read_bytes())
+        data = subprocess.check_output(
+            [
+                "git",
+                "show",
+                "v0.1.4:evidence/transcripts/2026-08-20-release-thread.txt",
+            ],
+            cwd=ROOT,
+        )
+        self.assertEqual(
+            data,
+            (ROOT / "evidence/transcripts/2026-08-20-release-thread.txt").read_bytes(),
+        )
 
     def test_demo_is_bound_cumulative_and_labelled(self):
         demo = json.loads((ROOT / "assets/demo.json").read_text())
-        for field, path in (("source_sha256", demo["source"]), ("builder_sha256", "assets/build_demo.py")):
-            self.assertEqual(demo[field], hashlib.sha256((ROOT / path).read_bytes()).hexdigest())
+        for field, path in (
+            ("source_sha256", demo["source"]),
+            ("builder_sha256", "assets/build_demo.py"),
+        ):
+            self.assertEqual(
+                demo[field], hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
+            )
         for name, digest in demo["assets"].items():
-            self.assertEqual(digest, hashlib.sha256((ROOT / "assets" / name).read_bytes()).hexdigest())
+            self.assertEqual(
+                digest,
+                hashlib.sha256((ROOT / "assets" / name).read_bytes()).hexdigest(),
+            )
         counts = demo["cumulative_visible_lines"]
         self.assertEqual(sorted(set(counts)), counts)
         self.assertGreater(len(counts), 1)
@@ -144,7 +196,10 @@ class TestBehavioralEvidence(unittest.TestCase):
         self.assertIn("synthetic fixture", demo["kind"])
         self.assertIn(b"NETSCAPE2.0", (ROOT / "assets/demo.gif").read_bytes())
         png = (ROOT / "assets/demo-poster.png").read_bytes()
-        self.assertEqual(demo["canvas"], [int.from_bytes(png[16:20], "big"), int.from_bytes(png[20:24], "big")])
+        self.assertEqual(
+            demo["canvas"],
+            [int.from_bytes(png[16:20], "big"), int.from_bytes(png[20:24], "big")],
+        )
 
 
 if __name__ == "__main__":
