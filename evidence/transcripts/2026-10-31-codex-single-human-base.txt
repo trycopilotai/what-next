@@ -1,0 +1,15 @@
+I’m applying the what-next skill to the supplied task facts, without running commands or proposed actions.
+
+### Agent lane — proposed, not started
+
+None
+
+### Human lane
+
+| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1 | Run `example login` in your terminal and complete sign-in | Interactive credential | Literal command ready; `example whoami` already returned “not logged in” | None | Supplied thread facts establish that only you can complete login. Other sources: n/a; no artifacts exist. |
+
+### Next
+
+- H1: Run `example login` and report the result without sharing secrets.

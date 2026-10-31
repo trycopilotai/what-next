@@ -1,0 +1,16 @@
+### Agent lane — proposed, not started
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run offline tests | `python3 -m unittest` | independent | Explicitly authorized; not started. Execution awaits selection after this determination. |
+
+### Human lane
+
+| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1 | Choose red or blue | Private judgment | Both options named: red, blue. | None | Your message states only you know your preference. Other sources: n/a; no artifacts exist. |
+
+### Next
+
+- A1: Run offline tests.
+- H1: Choose red or blue.

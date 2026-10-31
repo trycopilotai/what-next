@@ -1,0 +1,23 @@
+{
+  "questions": [
+    {
+      "question": "Two open items remain: A1 runs the offline unit tests with python3 -m unittest (authorized, not started), and H1 is your red-or-blue preference, which only you hold. Which do you want to act on now?",
+      "header": "Next",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "A1: Run the unit tests",
+          "description": "Execute python3 -m unittest in the working directory and report the results. Independent of H1."
+        },
+        {
+          "label": "H1: Red",
+          "description": "Record your preference as red. Nothing in the agent lane depends on this."
+        },
+        {
+          "label": "H1: Blue",
+          "description": "Record your preference as blue. Nothing in the agent lane depends on this."
+        }
+      ]
+    }
+  ]
+}

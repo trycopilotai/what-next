@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "The only open item is signing in to the example service. `example whoami` reports not logged in, and the login is interactive, so only you can complete it. What would you like to do?",
+      "header": "Next",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "H1: Sign in",
+          "description": "You run `example login` yourself (in Claude Code, type `! example login` so the output lands in this session) and complete the interactive prompt."
+        },
+        {
+          "label": "Not now",
+          "description": "Authorizes nothing; the sign-in stays open in the human lane."
+        }
+      ]
+    }
+  ]
+}

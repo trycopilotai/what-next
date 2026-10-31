@@ -1,0 +1,13 @@
+### Agent lane — proposed, not started
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run the offline test suite | `python3 -m unittest` | independent | The task facts say the run is authorized and not started. The tests are offline, so no credential or outward action is involved. The repo, thread, artifacts, git and web checks are n/a because the task says no artifacts exist and no commands are permitted during this determination. |
+
+### Human lane
+
+None
+
+### Next
+
+- A1: Run offline tests

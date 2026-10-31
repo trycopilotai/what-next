@@ -1,0 +1,16 @@
+I’m applying the what-next skill to the supplied task facts.
+
+### Agent lane — proposed, not started
+
+None
+
+### Human lane
+
+| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1 | Run `example login` in your terminal and report the result. | Interactive credential | Literal command: `example login` | None | Thread: `example whoami` returned “not logged in”; login is interactive and only you can complete it. Other sources: n/a; no artifacts exist. |
+
+### Next
+
+Next
+- H1: Sign in — Run example login in your terminal and report the result.

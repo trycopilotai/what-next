@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Which next step do you want?",
+      "header": "Next",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "A1: Run unit tests",
+          "description": "Authorizes me to run `python3 -m unittest` offline and report the results."
+        },
+        {
+          "label": "H1: Choose red or blue",
+          "description": "You reply with your preference, red or blue."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+**Agent lane: proposed, not started**
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run the offline unit tests | `python3 -m unittest` (from /tmp/wn-tui-ByHPfD) | independent | Operator states offline tests are authorized and not started. Not a git repo per environment. Test layout not inspected, since no commands are permitted during this determination. |
+
+**Human lane**
+
+| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1 | Say whether you want red or blue | 4. Private judgment | None | None | Operator states only they know this preference. Nothing in the thread or repo sets it, and a test run cannot settle it. |

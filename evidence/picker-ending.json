@@ -1,0 +1,920 @@
+{
+  "schema_version": 1,
+  "measurements": "No benchmark, accuracy rate, or independent real-world performance measurement.",
+  "base_commit": "2c176f9",
+  "skill_identity": "skill_sha256 is the sha256 of skills/what-next/SKILL.md as run. Branch commit IDs do not survive a rebase merge, so tests bind runs to that content hash, not to a commit.",
+  "runs": [
+    {
+      "id": "claude-fable-5-1-human-and-agent-base",
+      "scenario": "human-and-agent",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-fable-5-1"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-human-and-agent.txt",
+        "sha256": "ebef0945b95952afaebe55c654e470d915ffc1e71004e0b35a31ea376ea6ada4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-fable-5-1-human-and-agent-base.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-fable-5-1-human-and-agent-base-tool-input.json",
+        "sha256": "7dd29f1aceedb06eee0856ef5f1007262aac8d7b47310be19d412a1560a381c8"
+      },
+      "full_table_order_passed": false,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 3 options (A1: Run the unit tests; H1: Red; H1: Blue); the lane headings did not both precede the call. One ID appears on more than one option. The model wrote no text before the call."
+    },
+    {
+      "id": "claude-opus-5-5-human-and-agent-base",
+      "scenario": "human-and-agent",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-opus-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-human-and-agent.txt",
+        "sha256": "ebef0945b95952afaebe55c654e470d915ffc1e71004e0b35a31ea376ea6ada4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-opus-5-5-human-and-agent-base.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-opus-5-5-human-and-agent-base-tool-input.json",
+        "sha256": "bf4e9b219226728563bc8292b99d266b7c380c9c5b304bd53b62c4c79fadf44c"
+      },
+      "full_table_order_passed": false,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 2 options (A1: Run offline tests; H1: Choose red or blue); the lane headings did not both precede the call. The model wrote no text before the call."
+    },
+    {
+      "id": "claude-sonnet-5-5-human-and-agent-base",
+      "scenario": "human-and-agent",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-sonnet-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-human-and-agent.txt",
+        "sha256": "ebef0945b95952afaebe55c654e470d915ffc1e71004e0b35a31ea376ea6ada4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-sonnet-5-5-human-and-agent-base.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-sonnet-5-5-human-and-agent-base-tool-input.json",
+        "sha256": "2c8f2ea5532a0c4cb46b5d661e91eaa0393a852e8e5bca7090049a6ee37949a3"
+      },
+      "full_table_order_passed": false,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 2 options (A1: Run unit tests; H1: Choose red or blue); the lane headings did not both precede the call. The model wrote no text before the call."
+    },
+    {
+      "id": "claude-haiku-5-5-human-and-agent-base",
+      "scenario": "human-and-agent",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-haiku-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-human-and-agent.txt",
+        "sha256": "ebef0945b95952afaebe55c654e470d915ffc1e71004e0b35a31ea376ea6ada4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-haiku-5-5-human-and-agent-base.txt",
+        "sha256": "f4e633c0f744f666789b98319e48557c4bdd9fffba7c631c5590094e1274743a",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-haiku-5-5-human-and-agent-base-tool-input.json",
+        "sha256": "6e4e9ca4e2a7561cf7243edbc57b3229ff59234b59881bf64190dce158740d02"
+      },
+      "full_table_order_passed": true,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 2 options (A1: Run offline tests; H1: Choose red or blue); both lane headings preceded the call."
+    },
+    {
+      "id": "codex-human-and-agent-base",
+      "scenario": "human-and-agent",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Codex CLI",
+        "version": "0.163.0",
+        "model": "default of this CLI version; the JSON stream does not report it"
+      },
+      "invocation": "codex exec with the skill text inline; the plugin was not installed",
+      "mode": "noninteractive; text-choice fallback",
+      "input": {
+        "path": "evidence/fixtures/picker-human-and-agent.txt",
+        "sha256": "ebef0945b95952afaebe55c654e470d915ffc1e71004e0b35a31ea376ea6ada4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-codex-human-and-agent-base.txt",
+        "sha256": "514017c7fd9b8259a89c52d225d6d297aa62aa457d4ac29adb8875a6bde747dc",
+        "edited": false
+      },
+      "capture": "Unchanged agent messages from the JSON event stream, joined with blank lines.",
+      "tool": null,
+      "finding": "Noninteractive run; ended on a plain list or text under Next, with no picker available.",
+      "independent_evaluation": false
+    },
+    {
+      "id": "claude-fable-5-1-single-human-base",
+      "scenario": "single-human",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-fable-5-1"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-single-human.txt",
+        "sha256": "50e8f887e640f88ce21774166aa8bc7b101b5b42ebe017fa9fcf2038bcbb24b4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-fable-5-1-single-human-base.txt",
+        "sha256": "351c78861a3f14a17a6c0f5f1a5d68640db09c93e8947b8eb620fbcfa85c7792",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "claude-opus-5-5-single-human-base",
+      "scenario": "single-human",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-opus-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-single-human.txt",
+        "sha256": "50e8f887e640f88ce21774166aa8bc7b101b5b42ebe017fa9fcf2038bcbb24b4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-opus-5-5-single-human-base.txt",
+        "sha256": "a95addf7d8bcece4cfec7b3a6e90e1f9d4e108938c467ee2eb10b1dc5c570641",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "claude-sonnet-5-5-single-human-base",
+      "scenario": "single-human",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-sonnet-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-single-human.txt",
+        "sha256": "50e8f887e640f88ce21774166aa8bc7b101b5b42ebe017fa9fcf2038bcbb24b4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-sonnet-5-5-single-human-base.txt",
+        "sha256": "94e135e503c3ed6aaf871f76f7957e584435338869b0b9ce6f925f932a231ea2",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "claude-haiku-5-5-single-human-base",
+      "scenario": "single-human",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-haiku-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-single-human.txt",
+        "sha256": "50e8f887e640f88ce21774166aa8bc7b101b5b42ebe017fa9fcf2038bcbb24b4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-haiku-5-5-single-human-base.txt",
+        "sha256": "cf1d57becd042575ba6d0fbcf5e2e09f2df4d796a82414c870501b97bec49dbd",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "codex-single-human-base",
+      "scenario": "single-human",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Codex CLI",
+        "version": "0.163.0",
+        "model": "default of this CLI version; the JSON stream does not report it"
+      },
+      "invocation": "codex exec with the skill text inline; the plugin was not installed",
+      "mode": "noninteractive; text-choice fallback",
+      "input": {
+        "path": "evidence/fixtures/picker-single-human.txt",
+        "sha256": "50e8f887e640f88ce21774166aa8bc7b101b5b42ebe017fa9fcf2038bcbb24b4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-codex-single-human-base.txt",
+        "sha256": "baf34bf8a88299a056fd4608a7224eeb7001cebe8be13c1ac65b62f70faae0b8",
+        "edited": false
+      },
+      "capture": "Unchanged agent messages from the JSON event stream, joined with blank lines.",
+      "tool": null,
+      "finding": "Noninteractive run; ended on a plain list or text under Next, with no picker available.",
+      "independent_evaluation": false
+    },
+    {
+      "id": "claude-fable-5-1-agent-only-base",
+      "scenario": "agent-only",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-fable-5-1"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-agent-only.txt",
+        "sha256": "d3b26f5a22d0765d07fc796cb287e5fa6f974246ff4f0fef5b55dd745c40327e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-fable-5-1-agent-only-base.txt",
+        "sha256": "cceae7bf167f6c0e453943a7c2de8b2c50daa68f89b3e086d597cea141452cea",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "claude-opus-5-5-agent-only-base",
+      "scenario": "agent-only",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-opus-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-agent-only.txt",
+        "sha256": "d3b26f5a22d0765d07fc796cb287e5fa6f974246ff4f0fef5b55dd745c40327e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-opus-5-5-agent-only-base.txt",
+        "sha256": "0d75459f4d5c3ca01a898f90bed4c14fef012d2c205da3fe2b70c94f48b0330a",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "claude-sonnet-5-5-agent-only-base",
+      "scenario": "agent-only",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-sonnet-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-agent-only.txt",
+        "sha256": "d3b26f5a22d0765d07fc796cb287e5fa6f974246ff4f0fef5b55dd745c40327e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-sonnet-5-5-agent-only-base.txt",
+        "sha256": "e2a6f47264acda5baf2b78e33a9fcfbb63382a31a31bd7482884584901a07e7f",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "claude-haiku-5-5-agent-only-base",
+      "scenario": "agent-only",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-haiku-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-agent-only.txt",
+        "sha256": "d3b26f5a22d0765d07fc796cb287e5fa6f974246ff4f0fef5b55dd745c40327e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-haiku-5-5-agent-only-base.txt",
+        "sha256": "7911f0ba56ff248aa1a3c4acc79cca579f4930c8bfc28db718ac100851ddd585",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "codex-agent-only-base",
+      "scenario": "agent-only",
+      "phase": "base",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "29e61a19ce3c68d6ea183270fbf0796825c952b1d97c6c66cea72eb16e43e9c3",
+      "client": {
+        "product": "Codex CLI",
+        "version": "0.163.0",
+        "model": "default of this CLI version; the JSON stream does not report it"
+      },
+      "invocation": "codex exec with the skill text inline; the plugin was not installed",
+      "mode": "noninteractive; text-choice fallback",
+      "input": {
+        "path": "evidence/fixtures/picker-agent-only.txt",
+        "sha256": "d3b26f5a22d0765d07fc796cb287e5fa6f974246ff4f0fef5b55dd745c40327e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-codex-agent-only-base.txt",
+        "sha256": "c7be6a1f9a86402cf1d9a7103436ccdcd79cf6808ea91f5de4557cd02bdfbfc1",
+        "edited": false
+      },
+      "capture": "Unchanged agent messages from the JSON event stream, joined with blank lines.",
+      "tool": null,
+      "finding": "Noninteractive run; ended on a plain list or text under Next, with no picker available.",
+      "independent_evaluation": false
+    },
+    {
+      "id": "claude-fable-5-1-human-and-agent-edited",
+      "scenario": "human-and-agent",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-fable-5-1"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-human-and-agent.txt",
+        "sha256": "ebef0945b95952afaebe55c654e470d915ffc1e71004e0b35a31ea376ea6ada4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-fable-5-1-human-and-agent-edited.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-fable-5-1-human-and-agent-edited-tool-input.json",
+        "sha256": "920c391549f9d7d81a2d18895cd1ccb537bab4b190f903e382eae5b268ee5070"
+      },
+      "full_table_order_passed": false,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 2 options (A1: Run unit tests; H1: Choose red or blue); the lane headings did not both precede the call. The model wrote no text before the call."
+    },
+    {
+      "id": "claude-opus-5-5-human-and-agent-edited",
+      "scenario": "human-and-agent",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-opus-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-human-and-agent.txt",
+        "sha256": "ebef0945b95952afaebe55c654e470d915ffc1e71004e0b35a31ea376ea6ada4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-opus-5-5-human-and-agent-edited.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-opus-5-5-human-and-agent-edited-tool-input.json",
+        "sha256": "049724a979db18bae6905cfe7eebf192366be5a4938e312a00d6745eb23c366a"
+      },
+      "full_table_order_passed": false,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 2 options (A1: Run offline tests; H1: Choose red or blue); the lane headings did not both precede the call. The model wrote no text before the call."
+    },
+    {
+      "id": "claude-sonnet-5-5-human-and-agent-edited",
+      "scenario": "human-and-agent",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-sonnet-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-human-and-agent.txt",
+        "sha256": "ebef0945b95952afaebe55c654e470d915ffc1e71004e0b35a31ea376ea6ada4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-sonnet-5-5-human-and-agent-edited.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-sonnet-5-5-human-and-agent-edited-tool-input.json",
+        "sha256": "48a9cad30df35272db3772a74c8875873445b35d1a4461066bd2100ec26b9fb4"
+      },
+      "full_table_order_passed": false,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 2 options (A1: Run unit tests; H1: Choose red or blue); the lane headings did not both precede the call. The model wrote no text before the call."
+    },
+    {
+      "id": "claude-haiku-5-5-human-and-agent-edited",
+      "scenario": "human-and-agent",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-haiku-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-human-and-agent.txt",
+        "sha256": "ebef0945b95952afaebe55c654e470d915ffc1e71004e0b35a31ea376ea6ada4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-haiku-5-5-human-and-agent-edited.txt",
+        "sha256": "57199392260630a4302920f2e219792b2233b0b3ed5a6f204d3f13ea485292d3",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-haiku-5-5-human-and-agent-edited-tool-input.json",
+        "sha256": "4621dc91499823111014f114a9ba5667d9786e9a1b6687185ce33f9eb7d87d9b"
+      },
+      "full_table_order_passed": true,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 3 options (A1: Run offline tests; H1: Choose red or blue; Not now); both lane headings preceded the call. Not now was added although two choices already met the host minimum."
+    },
+    {
+      "id": "codex-human-and-agent-edited",
+      "scenario": "human-and-agent",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Codex CLI",
+        "version": "0.163.0",
+        "model": "default of this CLI version; the JSON stream does not report it"
+      },
+      "invocation": "codex exec with the skill text inline; the plugin was not installed",
+      "mode": "noninteractive; text-choice fallback",
+      "input": {
+        "path": "evidence/fixtures/picker-human-and-agent.txt",
+        "sha256": "ebef0945b95952afaebe55c654e470d915ffc1e71004e0b35a31ea376ea6ada4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-codex-human-and-agent-edited.txt",
+        "sha256": "efa396657abbda748e997bc00e97319d99098245612059887ed27ad03766ba84",
+        "edited": false
+      },
+      "capture": "Unchanged agent messages from the JSON event stream, joined with blank lines.",
+      "tool": null,
+      "finding": "Noninteractive run; ended on a plain list or text under Next, with no picker available.",
+      "independent_evaluation": false
+    },
+    {
+      "id": "claude-fable-5-1-single-human-edited",
+      "scenario": "single-human",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-fable-5-1"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-single-human.txt",
+        "sha256": "50e8f887e640f88ce21774166aa8bc7b101b5b42ebe017fa9fcf2038bcbb24b4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-fable-5-1-single-human-edited.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-fable-5-1-single-human-edited-tool-input.json",
+        "sha256": "711a6ee72a5fa78fb381e6923f8846dc8eff08360bdb366493014af8cc9e02bc"
+      },
+      "full_table_order_passed": false,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 2 options (H1: Sign in; Not now); the lane headings did not both precede the call. The model wrote no text before the call."
+    },
+    {
+      "id": "claude-opus-5-5-single-human-edited",
+      "scenario": "single-human",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-opus-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-single-human.txt",
+        "sha256": "50e8f887e640f88ce21774166aa8bc7b101b5b42ebe017fa9fcf2038bcbb24b4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-opus-5-5-single-human-edited.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-opus-5-5-single-human-edited-tool-input.json",
+        "sha256": "d6693804309548a4e1b163ca72d5d4eef0c1406e49861e653fc6ad31c059792a"
+      },
+      "full_table_order_passed": false,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 2 options (H1: Sign in; Not now); the lane headings did not both precede the call. The model wrote no text before the call."
+    },
+    {
+      "id": "claude-sonnet-5-5-single-human-edited",
+      "scenario": "single-human",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-sonnet-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-single-human.txt",
+        "sha256": "50e8f887e640f88ce21774166aa8bc7b101b5b42ebe017fa9fcf2038bcbb24b4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-sonnet-5-5-single-human-edited.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-sonnet-5-5-single-human-edited-tool-input.json",
+        "sha256": "8daf60dd2bcb2481a1368d0d0b405232b4a6ea67d2fc9744e155a12f8d466fce"
+      },
+      "full_table_order_passed": false,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 2 options (H1: Sign in; Not now); the lane headings did not both precede the call. The model wrote no text before the call."
+    },
+    {
+      "id": "claude-haiku-5-5-single-human-edited",
+      "scenario": "single-human",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-haiku-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-single-human.txt",
+        "sha256": "50e8f887e640f88ce21774166aa8bc7b101b5b42ebe017fa9fcf2038bcbb24b4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-haiku-5-5-single-human-edited.txt",
+        "sha256": "e018ace19ef2f17be4f19201fec7a49266381e5d7794e1e12140d5b09644c439",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": "AskUserQuestion",
+      "independent_evaluation": false,
+      "tool_input": {
+        "path": "evidence/transcripts/2026-10-31-claude-haiku-5-5-single-human-edited-tool-input.json",
+        "sha256": "f9fd9bb4b409e34e1d3f968a5c8a051a1a9896c96d50616787e638c7f855aa4b"
+      },
+      "full_table_order_passed": true,
+      "result": "The user doesn't want to proceed with this tool use. The tool use was rejected (eg. if it was a file edit, the new_string was NOT written to the file). STOP what you are doing and wait for the user to",
+      "finding": "Called AskUserQuestion with 2 options (H1: Sign in; Not now); both lane headings preceded the call."
+    },
+    {
+      "id": "codex-single-human-edited",
+      "scenario": "single-human",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Codex CLI",
+        "version": "0.163.0",
+        "model": "default of this CLI version; the JSON stream does not report it"
+      },
+      "invocation": "codex exec with the skill text inline; the plugin was not installed",
+      "mode": "noninteractive; text-choice fallback",
+      "input": {
+        "path": "evidence/fixtures/picker-single-human.txt",
+        "sha256": "50e8f887e640f88ce21774166aa8bc7b101b5b42ebe017fa9fcf2038bcbb24b4"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-codex-single-human-edited.txt",
+        "sha256": "809f8d50947b7e70edfe372c7689b9f3f82ba5c27aaae0a87bb8b0fd8d117aeb",
+        "edited": false
+      },
+      "capture": "Unchanged agent messages from the JSON event stream, joined with blank lines.",
+      "tool": null,
+      "finding": "Noninteractive run; ended on a plain list or text under Next, with no picker available.",
+      "independent_evaluation": false
+    },
+    {
+      "id": "claude-fable-5-1-agent-only-edited",
+      "scenario": "agent-only",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-fable-5-1"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-agent-only.txt",
+        "sha256": "d3b26f5a22d0765d07fc796cb287e5fa6f974246ff4f0fef5b55dd745c40327e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-fable-5-1-agent-only-edited.txt",
+        "sha256": "976de28947627de41fcee212102def5597b23a560d7c96c3be55c4ac1652f9c6",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "claude-opus-5-5-agent-only-edited",
+      "scenario": "agent-only",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-opus-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-agent-only.txt",
+        "sha256": "d3b26f5a22d0765d07fc796cb287e5fa6f974246ff4f0fef5b55dd745c40327e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-opus-5-5-agent-only-edited.txt",
+        "sha256": "d52669bd66719f6e81772359a96409744f508f723a33c2aa312e16e73bb4f054",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "claude-sonnet-5-5-agent-only-edited",
+      "scenario": "agent-only",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-sonnet-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-agent-only.txt",
+        "sha256": "d3b26f5a22d0765d07fc796cb287e5fa6f974246ff4f0fef5b55dd745c40327e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-sonnet-5-5-agent-only-edited.txt",
+        "sha256": "c57c437c19b13b7e4917e90cc73c29e8c51456c6568f7af9dbfbbe3cd1012d1d",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "claude-haiku-5-5-agent-only-edited",
+      "scenario": "agent-only",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Claude Code",
+        "version": "2.1.314",
+        "model": "claude-haiku-5-5"
+      },
+      "invocation": "/what-next:what-next",
+      "mode": "interactive, driven in tmux; native picker available",
+      "input": {
+        "path": "evidence/fixtures/picker-agent-only.txt",
+        "sha256": "d3b26f5a22d0765d07fc796cb287e5fa6f974246ff4f0fef5b55dd745c40327e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-claude-haiku-5-5-agent-only-edited.txt",
+        "sha256": "928a4a08a62e0cfde4a837c7c2d4eece3c3eb7a26b16218efc035d7c230070da",
+        "edited": false
+      },
+      "capture": "Unchanged assistant text blocks written after the skill loaded and before any AskUserQuestion call, read from the session transcript; the file is a lone newline when the model wrote none.",
+      "tool": null,
+      "independent_evaluation": false,
+      "finding": "Ended without an AskUserQuestion call."
+    },
+    {
+      "id": "codex-agent-only-edited",
+      "scenario": "agent-only",
+      "phase": "edited",
+      "date": "2026-10-31",
+      "input_kind": "synthetic fixture",
+      "skill_sha256": "9c4fc385f14971dcd30c2468a217a1690577ae348afab900d79560fddaeaf200",
+      "client": {
+        "product": "Codex CLI",
+        "version": "0.163.0",
+        "model": "default of this CLI version; the JSON stream does not report it"
+      },
+      "invocation": "codex exec with the skill text inline; the plugin was not installed",
+      "mode": "noninteractive; text-choice fallback",
+      "input": {
+        "path": "evidence/fixtures/picker-agent-only.txt",
+        "sha256": "d3b26f5a22d0765d07fc796cb287e5fa6f974246ff4f0fef5b55dd745c40327e"
+      },
+      "output": {
+        "path": "evidence/transcripts/2026-10-31-codex-agent-only-edited.txt",
+        "sha256": "ce4cbc0b9f117f47d88594103161748b33ba884656049c9a34633c1d6da84613",
+        "edited": false
+      },
+      "capture": "Unchanged agent messages from the JSON event stream, joined with blank lines.",
+      "tool": null,
+      "finding": "Noninteractive run; ended on a plain list or text under Next, with no picker available.",
+      "independent_evaluation": false
+    }
+  ]
+}

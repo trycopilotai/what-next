@@ -1,0 +1,18 @@
+I’m applying the what-next skill to the two supplied items, without running commands or making writes.
+
+### Agent lane — proposed, not started
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run offline tests | `python3 -m unittest` | independent | Authorized and not started; executable after this determination. No commands permitted during it. |
+
+### Human lane
+
+| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1 | Choose red or blue | Private judgment | Both choices are specified; no further preparation needed. | None | Your message states only you know your preference. Other sources: n/a; no artifacts exist. |
+
+### Next
+
+- **A1: Run offline tests** — authorize executing the test command after this determination.
+- **H1: Choose red or blue** — reply with your preference.

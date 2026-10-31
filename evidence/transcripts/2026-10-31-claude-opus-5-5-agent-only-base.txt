@@ -1,0 +1,15 @@
+### Agent lane — proposed, not started
+
+| ID  | Proposed action    | Next tool/command                 | State       | Basis                                                                                                    |
+| --- | ------------------ | --------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------- |
+| A1  | Run offline tests  | Bash: `python3 -m unittest`       | independent | Your message says the test run is authorized and offline. It doesn't match any of the six gaps, so it stays with me. |
+
+### Human lane
+
+None
+
+### Next
+
+- A1: Run offline tests
+
+This only sorts the work, so I haven't run anything. A1 is the only open item and it needs nothing from you. I'll start it once you pick it.

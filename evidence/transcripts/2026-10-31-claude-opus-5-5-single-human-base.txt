@@ -1,0 +1,13 @@
+### Agent lane — proposed, not started
+
+None
+
+### Human lane
+
+| ID  | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1  | Run `! example login` and finish the interactive sign-in | Interactive credential | `example whoami` already confirmed you're not logged in. The literal command is ready. | None | Your message says the login is interactive and only you can complete it, and that `example whoami` returned "not logged in". There are no artifacts, so the repo, documents, git/CI and web sources don't apply. |
+
+### Next
+
+- H1: Sign in with `! example login`

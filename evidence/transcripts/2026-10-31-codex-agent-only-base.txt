@@ -1,0 +1,13 @@
+### Agent lane — proposed, not started
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run offline tests | `python3 -m unittest` | independent | User states tests are authorized and not started. Other sources: n/a; no artifacts exist. |
+
+### Human lane
+
+None
+
+### Next
+
+- A1: Run offline tests

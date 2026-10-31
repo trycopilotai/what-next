@@ -1,0 +1,13 @@
+### Agent lane — proposed, not started
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run the offline test suite | `python3 -m unittest` (cwd `/tmp/wn-tui-Zossr3`) | independent | Operator task fact: offline tests authorized, not started. Repo source n/a (not a git repo). Thread source n/a (no earlier work). Artifact source n/a (no artifacts). Git/PR/CI n/a (no git). Web n/a (local offline run). Not a six-gap item, so it stays agent work. |
+
+### Human lane
+
+None
+
+### Next
+
+A1: Run the offline tests with `python3 -m unittest`
