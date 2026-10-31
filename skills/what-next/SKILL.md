@@ -208,15 +208,27 @@ ordered by how much each unblocks, using the host adapter
 below. Only offer independent agent items or human actions
 that can be performed now. A blocked agent item stays in the
 table until its preconditions hold. Every choice starts with
-its ID, such as `A1: Draft the reply` or `H1: Sign in`. Keep
-labels short and neutral; omit recommendation badges unless
-the host requires them. If additional actionable choices
-exist, state
-`<N> additional actionable choices are listed above.`
+its ID, such as `A1: Draft the reply` or `H1: Sign in`.
+`Not now`, described under **Host adapters**, is the one
+choice that needs neither an ID nor an action. Keep labels
+short and neutral; omit recommendation badges unless the
+host requires them. If additional actionable choices exist,
+state `<N> additional actionable choices are listed above.`
 immediately below `Next`, before any picker or plain-list
 choices. Never place that count after the choices. All work
 remains visible in the tables even when it is absent from
 the picker.
+
+When the human lane has at least one `H` item and the report
+hands the choices back to the operator, `Next` is a
+structured-choice call, and the call is the last thing in
+the response: both tables, then `Next`, then the count line
+when one is needed, then the call, and nothing after it.
+**Host adapters** says how to write the call and when a
+plain list replaces it. When the human lane is `None`, use
+the adapter as written. When the human lane has an `H` item
+and no choice can be offered now, end at `Next` with no
+choices and no call.
 
 This skill **determines only**. Do not execute the agent
 lane as part of running it. The lane is a proposal the
@@ -233,12 +245,17 @@ invoked**.
 When the operator explicitly asks for this determination,
 return it and stop even if the human lane is empty. Do not
 execute the proposed lane without the operator's selection.
+If the human lane has an `H` item, stopping means ending the
+way `Next` describes.
 
 When applying this skill internally before a handoff during
 an already-authorized task, an empty human lane does not
 justify stopping. Continue that task's independent work.
 Human blockers likewise do not suspend unrelated authorized
-work. This internal check never expands authorization.
+work. This internal check never expands authorization. The
+call waits for an answer, so while independent authorized
+work remains, do that work first, then write the report and
+make the call when the turn would otherwise end.
 
 Do not reach for this skill to manufacture a stopping point
 mid-task. Producing a human lane you did not need is how a
@@ -246,21 +263,43 @@ status summary disguises itself as analysis.
 
 ## Host adapters
 
-Use the current host's available structured-choice tool,
-following its schema and mode restrictions. In Claude Code
-this is usually `AskUserQuestion`; in Codex it may be
-`request_user_input` or another exposed input tool. Do not
-assume a picker is always available or unavailable, and do
-not switch modes merely to obtain one. Respect required
-option counts and label conventions without adding filler.
+The picker is one call, written the same way on every host.
+Call the host's structured-choice tool: `AskUserQuestion` in
+Claude Code, `request_user_input` in Codex, and on any other
+host whichever exposed tool offers a short single-select
+list with a free-text answer. Read that tool's schema first
+and obey its limits and label conventions. Never name a tool
+the host does not expose, and do not switch modes merely to
+obtain one.
 
-If there is only one actionable choice, the tool cannot
-represent the choices faithfully, or the host cannot show
-the full lane report before the picker, use a plain list
-under `Next`, with one ID-labelled option per line. The same
-fallback applies to noninteractive runs. A picker selection
-authorizes only that choice and its necessary preparation;
-tool approval rules still apply.
+Send one question with the header `Next`, single select, and
+one option per choice. Each label is the choice's ID and a
+short action, such as `H1: Sign in`. Each description is one
+line saying what picking the option does: what it authorizes
+for an agent item, what the operator will do or answer for a
+human item. Keep the `Next` order. If the host allows fewer
+options than there are choices, offer the first ones in
+order and make the additional-choices count the number of
+actionable choices not offered.
+
+A call needs at least as many options as the host requires;
+Claude Code requires two. When the human lane has an `H`
+item and the host requires more options than there are
+choices, add `Not now` as the last option. It authorizes
+nothing and is the only padding allowed. Never add it to a
+plain list.
+
+Use a plain list under `Next`, with one ID-labelled option
+per line, instead of the call when the host exposes no
+structured-choice tool, the mode forbids it, the run is
+noninteractive, the tool cannot represent the choices
+faithfully, or the host cannot show the full lane report
+before the call. Use a plain list too when the human lane is
+`None` and only one actionable choice exists. The list
+carries the same IDs and labels the call would, without
+`Not now`. A picker selection authorizes only that choice
+and its necessary preparation; tool approval rules still
+apply.
 
 For an interactive login, give the literal command. In
 Claude Code, suggest its `!`-prefixed form when shell
