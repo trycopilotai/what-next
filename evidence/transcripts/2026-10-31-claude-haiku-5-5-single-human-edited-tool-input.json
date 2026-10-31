@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "The only open work is signing in to the example service. Which next step do you want?",
+      "header": "Next",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "H1: Sign in",
+          "description": "You run `! example login` in this session and complete the prompt, then tell me it is done."
+        },
+        {
+          "label": "Not now",
+          "description": "Authorizes nothing; the sign-in stays open."
+        }
+      ]
+    }
+  ]
+}

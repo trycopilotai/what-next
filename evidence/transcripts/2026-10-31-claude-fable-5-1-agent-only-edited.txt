@@ -1,0 +1,13 @@
+### Agent lane — proposed, not started
+
+| ID  | Proposed action                 | Next tool/command               | State       | Basis                                                                                                                                   |
+| --- | ------------------------------- | ------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| A1  | Run the offline unit test suite | Bash: `python3 -m unittest`     | independent | Task facts in this thread: authorized, not started. Every precondition holds now. Repo, artifacts, git, and web are n/a: no artifacts exist. Note: with no artifacts in the working directory, the run may discover zero tests; that is a result to report, not a blocker. |
+
+### Human lane
+
+None
+
+### Next
+
+- A1: Run `python3 -m unittest`

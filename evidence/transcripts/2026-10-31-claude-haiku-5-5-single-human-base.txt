@@ -1,0 +1,15 @@
+### Agent lane — proposed, not started
+
+None. The only open item is the sign-in, and it is a human-required action.
+
+### Human lane
+
+| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1 | Run `example login` and complete the interactive sign-in | 1. Interactive credential | None | None | Thread: `example whoami` returned "not logged in". Login requires an interactive prompt that only you can complete. Repo, artifacts, git/PR/CI, and web: n/a, since no artifacts exist and no other open work was reported. Host policy: n/a. |
+
+### Next
+
+1. `H1: Sign in to the example service`
+
+Run it in your terminal, or in this session with `! example login` so the output lands in the conversation. I won't ask for credentials. Once you're signed in, `example whoami` can confirm it.

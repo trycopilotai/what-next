@@ -1,0 +1,1 @@
+Use /what-next:what-next. This is an explicit determination only; do not run any proposed action. Synthetic open work: run offline tests via python3 -m unittest (authorized; not started). No other open work exists. These are all task facts; other sources are n/a because no artifacts exist. No commands or writes are permitted during the determination.

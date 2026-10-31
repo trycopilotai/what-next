@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Next: H1 means you run `! example login` here and finish the sign-in. Which do you want?",
+      "header": "Next",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "H1: Sign in",
+          "description": "You run `! example login` in this prompt and finish the interactive sign-in."
+        },
+        {
+          "label": "Not now",
+          "description": "Authorizes nothing and leaves H1 open."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+### Agent lane — proposed, not started
+
+| ID  | Proposed action                 | Next tool/command                        | State       | Basis                                                                                                                                      |
+| --- | ------------------------------- | ---------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| A1  | Run the offline unit test suite | `Bash: python3 -m unittest` in `/tmp/wn-tui-NY0oN8` | independent | Task facts: authorized, not started. Tool and preconditions named, so no gap. Repo, git log, artifacts, web: n/a, no artifacts exist and this is not a git repository. |
+
+### Human lane
+
+None
+
+### Next
+
+- A1: Run the offline unit tests
+
+This is a determination only. A1 is proposed and has not been run. No commands or writes were executed.

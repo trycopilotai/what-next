@@ -1,0 +1,17 @@
+### Agent lane — proposed, not started
+
+None
+
+### Human lane
+
+| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1 | Run `example login` and complete the interactive sign-in. | 1. Interactive credential | `example whoami` already returned not logged in, so the login is needed. Nothing else is staged. | None | Thread: you said the login is interactive and only you can complete it. Repo, artifact and git/CI: n/a, no artifacts exist. Web: n/a, a credential prompt can't be settled from public sources. Host policy: n/a, this gap isn't a policy question. |
+
+### Next
+
+Only one choice is actionable, so I'm using a plain list instead of a picker.
+
+- H1: Sign in. In this session, type `! example login`. Don't share any secrets with me. Once it finishes, tell me, and I can re-check with `example whoami` if you want.
+
+I ran nothing, as you asked.

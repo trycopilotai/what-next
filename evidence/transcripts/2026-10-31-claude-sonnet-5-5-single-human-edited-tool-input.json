@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "What should happen next?",
+      "header": "Next",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "H1: Sign in",
+          "description": "You run `! example login` and complete the interactive sign-in, then report the result."
+        },
+        {
+          "label": "Not now",
+          "description": "Authorizes nothing; the sign-in stays open."
+        }
+      ]
+    }
+  ]
+}

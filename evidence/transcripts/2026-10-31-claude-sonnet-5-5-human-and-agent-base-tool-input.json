@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Which item should go next?",
+      "header": "Next",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "A1: Run unit tests",
+          "description": "Run `python3 -m unittest` offline in /tmp/wn-tui-hIa4Dc."
+        },
+        {
+          "label": "H1: Choose red or blue",
+          "description": "Tell me your preference. Nothing else depends on it."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+I’m applying the what-next skill to classify the stated open work. I won’t run any commands or proposed actions.
+
+### Agent lane — proposed, not started
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run offline tests | `python3 -m unittest` | independent | Explicitly authorized; not started. Thread supplies all task facts. Other sources n/a: no artifacts exist. |
+
+### Human lane
+
+None
+
+### Next
+
+- A1: Run offline tests

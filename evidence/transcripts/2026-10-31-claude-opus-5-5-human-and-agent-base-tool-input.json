@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Which open item should go next: A1 (run the offline tests with python3 -m unittest) or H1 (your choice of red or blue)?",
+      "header": "Next",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "A1: Run offline tests",
+          "description": "I run python3 -m unittest and report the results."
+        },
+        {
+          "label": "H1: Choose red or blue",
+          "description": "You give your preference. Type red or blue in Other."
+        }
+      ]
+    }
+  ]
+}

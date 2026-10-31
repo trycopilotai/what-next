@@ -1,0 +1,13 @@
+### Agent lane — proposed, not started
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run the offline unit tests | `cd /tmp/wn-tui-bnP1pv && python3 -m unittest` (Bash) | independent | Operator authorized this run and marked it not started. It is settleable by running it, so it stays in the agent lane. The working directory is not a git repo. I did not confirm that test modules exist, so zero discovered tests is a possible outcome. |
+
+### Human lane
+
+None. Every item is agent-addressable and no gap type applies. The only candidate, the test run, has no credential, device, outward action, judgment, access, or third-party dependency.
+
+### Next
+
+1. A1: Run the offline tests with `python3 -m unittest`

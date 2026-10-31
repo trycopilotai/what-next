@@ -1,0 +1,11 @@
+### Agent lane — proposed, not started
+
+None
+
+### Human lane
+
+| ID | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1 | Run `! example login` and complete the interactive sign-in | 1. Interactive credential | `example whoami` already returned not logged in; no other preparation pending | None | Task facts: sign-in is the only open work, and `whoami` reported not logged in. Repo, thread, git, and web checks are n/a: no commands are permitted during this determination, and no other artifacts exist. |
+
+Next

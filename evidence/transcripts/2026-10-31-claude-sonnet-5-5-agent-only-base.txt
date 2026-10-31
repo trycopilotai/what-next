@@ -1,0 +1,15 @@
+### Agent lane: proposed, not started
+
+| ID | Proposed action | Next tool/command | State | Basis |
+| --- | --- | --- | --- | --- |
+| A1 | Run the offline test suite | `python3 -m unittest` | independent | The task facts say it is authorized and not started. No other source applies because no artifacts exist. |
+
+### Human lane
+
+None
+
+### Next
+
+- A1: Run the offline tests with `python3 -m unittest`
+
+I haven't run anything. The determination stops here until you select A1.

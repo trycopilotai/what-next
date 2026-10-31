@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Which item should I act on next? Nothing has been run.",
+      "header": "Next",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "A1: Run offline tests",
+          "description": "Run `python3 -m unittest`. Authorized and not started. Selecting this authorizes only that command."
+        },
+        {
+          "label": "H1: Choose red or blue",
+          "description": "Your preference is needed. I take no action on this item until you answer."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+### Agent lane — proposed, not started
+
+None
+
+### Human lane
+
+| ID  | Needed from you | Gap type | Prepared | Unblocks | Basis |
+| --- | --- | --- | --- | --- | --- |
+| H1  | Run `! example login` in this session and complete the interactive prompt | Interactive credential | Precondition already confirmed: `example whoami` returned not logged in. The literal command is named. Nothing pending. | None | Task facts: the login is interactive and only you can complete it. Repo, thread artifacts, git state, and web are n/a because no artifacts exist. Not demotable: an interactive prompt cannot be satisfied by any tool call I can name. |
+
+### Next
+
+- H1: Sign in by running `! example login`

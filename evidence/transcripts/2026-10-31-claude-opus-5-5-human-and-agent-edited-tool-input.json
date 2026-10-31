@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Which open item do you want to act on next?",
+      "header": "Next",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "A1: Run offline tests",
+          "description": "Lets the agent run `python3 -m unittest` and report the results."
+        },
+        {
+          "label": "H1: Choose red or blue",
+          "description": "You answer with your preference, red or blue."
+        }
+      ]
+    }
+  ]
+}
