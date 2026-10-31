@@ -43,7 +43,8 @@ not a screen capture. For reduced motion, open the
 
 A two-lane table, then one to four next actions — through
 the host's picker where there is one, as a plain list where
-there is not.
+there is not. When the human lane has an item, the picker
+call is the last thing in the response.
 
 ### Agent lane — proposed, not started
 
@@ -72,7 +73,9 @@ unblock cells, and choices. Empty lanes render as `None`.
 Unfinished preparation is proposed as an agent item; it is
 not described as already completed. If more than four
 actionable choices exist, the remaining count precedes the
-picker or plain list.
+picker or plain list. A human item makes the picker call the
+ending; a host with no picker gets the same choices as a
+plain list.
 
 Explicit invocation determines only, even with no human
 blockers. An internal handoff check continues independent,
@@ -283,6 +286,24 @@ That record uses an earlier private source snapshot, not the
 final org protocol. Its input fixture and skill hash
 identify what was exercised; it does not validate the
 current adapter's native rendering.
+
+Runs of the picker-ending change are indexed in
+[`evidence/picker-ending.json`](evidence/picker-ending.json).
+They are interactive Claude Code 2.1.314 sessions on four
+models, driven in tmux, and noninteractive Codex runs with
+the skill text inline, each before and after the change on
+the same three synthetic fixtures. An output file holds the
+assistant's text before any call, so it is a lone newline
+when a model wrote none, and the harness cancelled every
+call, so no choice was selected. On the edited skill every
+Claude Code run with a human item made an `AskUserQuestion`
+call (8 of 8, against 4 of 8 before), and all of that change
+is on the fixture whose only choice is a human item, where
+the base skill ends on a plain list. Both lane headings
+preceded the call in 2 of those 8 runs, so the known
+limitation above stands. No run on the agent-only control
+called it. The Codex runs exercise the plain list fallback
+only. Some outputs name throwaway temporary directories.
 
 Heading levels and punctuation vary between the captured
 outputs. Tests enforce the lane order, exact columns, IDs,
