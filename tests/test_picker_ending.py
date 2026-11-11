@@ -221,7 +221,9 @@ class TestRecordedRuns(unittest.TestCase):
         self.assertIn(f"preceded the call in {ordered} of those 8 runs", readme)
 
     def test_agent_only_control_never_calls(self):
-        for run in self.phase("base", "agent-only") + self.phase("edited", "agent-only"):
+        for run in self.phase("base", "agent-only") + self.phase(
+            "edited", "agent-only"
+        ):
             with self.subTest(run=run["id"]):
                 self.assertIsNone(run["tool"])
 
@@ -251,7 +253,9 @@ class TestRecordedRuns(unittest.TestCase):
                 self.assertEqual({"A1", "H1"}, ids)
 
     def test_plain_list_runs_end_on_id_labelled_choices(self):
-        pattern = re.compile(r"^\s*(?:[-*] |\d+\. )?(?:\*\*|`)?([AH]\d+)(?:\*\*|`)?:", re.M)
+        pattern = re.compile(
+            r"^\s*(?:[-*] |\d+\. )?(?:\*\*|`)?([AH]\d+)(?:\*\*|`)?:", re.M
+        )
         for run in self.runs:
             if run["tool"] is not None:
                 continue
