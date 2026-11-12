@@ -50,21 +50,62 @@ class TestSkillText(unittest.TestCase):
 
     def test_next_requires_the_call_to_be_the_last_thing(self):
         body = section(self.text, "### Next")
-        self.assertIn("`Next` is a structured-choice call", body)
+        self.assertIn("`Next` is instead one structured-choice call", body)
         self.assertIn("the last thing in the response", body)
         self.assertIn("nothing after it", body)
 
-    def test_next_carves_not_now_out_of_the_id_rule(self):
+    def test_next_asks_one_question_per_human_item(self):
         body = section(self.text, "### Next")
-        self.assertIn("`Not now`", body)
-        self.assertIn("needs neither an ID nor an action", body)
+        self.assertIn("asks one question per `H` item, in the human lane's order", body)
+        self.assertIn("Each question starts with its ID", body)
+        self.assertIn("its options are the answers to it, so they carry no ID", body)
+
+    def test_next_keeps_agent_items_out_of_the_human_call(self):
+        body = section(self.text, "### Next")
+        self.assertIn("Agent items are never options in that call", body)
+        self.assertIn("the operator authorizes one by replying with its ID", body)
 
     def test_host_adapters_name_each_tool_and_the_padding(self):
         body = section(self.text, "## Host adapters")
-        for token in ("`AskUserQuestion`", "`request_user_input`", "`Not now`"):
+        for token in (
+            "`AskUserQuestion`",
+            "`request_user_input`",
+            "`Done`",
+            "`Not now`",
+        ):
             with self.subTest(token=token):
                 self.assertIn(token, body)
+        self.assertIn("offer `Done` and then `Not now`", body)
+        self.assertIn("the only padding allowed", body)
         self.assertIn("Never add it to a plain list", body)
+
+    def test_host_adapters_head_each_human_question_with_its_id(self):
+        body = section(self.text, "## Host adapters")
+        self.assertIn("send one question per `H` item, in the human lane's order", body)
+        self.assertIn("starts with the ID and ends in `?`", body)
+        self.assertIn(
+            "Its header is the ID, such as `H1`, and it is single select", body
+        )
+        self.assertIn("Its 2 to 4 options are the concrete answers", body)
+
+    def test_host_adapters_count_the_human_items_a_call_does_not_ask(self):
+        body = section(self.text, "## Host adapters")
+        self.assertIn("`<N> additional human items are listed above.`", body)
+        self.assertIn(
+            "Claude Code allows 1 to 4 questions per call and 2 to 4 options per question",
+            body,
+        )
+        self.assertIn("asks `H1` alone under the same rule", body)
+
+    def test_host_adapters_head_a_question_next_only_for_an_empty_human_lane(self):
+        """The rejected layout was one `Next` question carrying both lanes' choices."""
+        body = section(self.text, "## Host adapters")
+        sentences = [s for s in re.split(r"(?<=\.) ", body) if "header `Next`" in s]
+        self.assertTrue(sentences)
+        for sentence in sentences:
+            with self.subTest(sentence=sentence):
+                self.assertTrue(sentence.startswith("When the human lane is `None`"))
+        self.assertNotIn("`H1: Sign in`", body)
 
     def test_host_adapters_keep_the_plain_list_fallback(self):
         body = section(self.text, "## Host adapters")
@@ -79,6 +120,12 @@ class TestSkillText(unittest.TestCase):
 
 
 class TestRecordedRuns(unittest.TestCase):
+    """The edited phase ran this change's first draft, one `Next` question.
+
+    The operator rejected that layout for one question per human item, so these
+    runs describe the draft; TestSkillText alone covers the shipped layout.
+    """
+
     def setUp(self):
         self.record = json.loads((ROOT / "evidence/picker-ending.json").read_text())
         self.runs = self.record["runs"]
@@ -138,7 +185,7 @@ class TestRecordedRuns(unittest.TestCase):
         self.assertNotIn(base_hash, edited)
         self.assertTrue(edited <= known)
 
-    def test_recorded_calls_have_the_fixed_shape(self):
+    def test_recorded_calls_have_the_first_draft_shape(self):
         calls = [r for r in self.runs if r["tool"] is not None]
         self.assertTrue(calls)
         for run in calls:
@@ -155,6 +202,15 @@ class TestRecordedRuns(unittest.TestCase):
                     self.assertTrue(option["description"].strip())
                     if option["label"] != "Not now":
                         self.assertRegex(option["label"], LABEL)
+
+    def test_no_recorded_run_exercises_the_shipped_skill(self):
+        shipped = hashlib.sha256(SKILL.read_bytes()).hexdigest()
+        self.assertNotIn(shipped, {r["skill_sha256"] for r in self.runs})
+        readme = " ".join((ROOT / "README.md").read_text().split())
+        self.assertIn("no recorded run exercises the current text", readme)
+        self.assertIn(
+            "no run here exercises the shipped SKILL.md", self.record["layout_note"]
+        )
 
     def test_not_now_is_the_last_option_and_pads_the_single_choice(self):
         for run in self.runs:
