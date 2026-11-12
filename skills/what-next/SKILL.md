@@ -208,31 +208,34 @@ ordered by how much each unblocks, using the host adapter
 below. Only offer independent agent items or human actions
 that can be performed now. A blocked agent item stays in the
 table until its preconditions hold. Every choice starts with
-its ID, such as `A1: Draft the reply` or `H1: Sign in`.
-`Not now`, described under **Host adapters**, is the one
-choice that needs neither an ID nor an action. Keep labels
-short and neutral; omit recommendation badges unless the
-host requires them. If additional actionable choices exist,
-state `<N> additional actionable choices are listed above.`
+its ID, such as `A1: Draft the reply` or `H1: Sign in`. Keep
+labels short and neutral; omit recommendation badges unless
+the host requires them. If additional actionable choices
+exist, state
+`<N> additional actionable choices are listed above.`
 immediately below `Next`, before any picker or plain-list
 choices. Never place that count after the choices. All work
 remains visible in the tables even when it is absent from
 the picker.
 
 When the human lane has at least one `H` item and the report
-hands the choices back to the operator, `Next` is a
-structured-choice call, and the call is the last thing in
-the response: both tables, then `Next`, then the count line
-when one is needed, then the call, and nothing after it.
-**Host adapters** says how to write the call and when a
-plain list replaces it. When the human lane is `None`, use
-the adapter as written. When the human lane has an `H` item
-and no choice can be offered now, end at `Next` with no
-choices and no call.
+hands control back to the operator, `Next` is instead one
+structured-choice call that asks one question per `H` item,
+in the human lane's order. Each question starts with its ID,
+such as `H1: Will you sign in now?`, and its options are the
+answers to it, so they carry no ID. Agent items are never
+options in that call: they stay in the Agent table, and the
+operator authorizes one by replying with its ID. The call is
+the last thing in the response: both tables, then `Next`,
+then the count line when one is needed, then the call, and
+nothing after it. **Host adapters** says how to write the
+call, what to do when the host caps it, and when the plain
+list above replaces it. When the human lane is `None`, use
+the adapter as written.
 
 This skill **determines only**. Do not execute the agent
 lane as part of running it. The lane is a proposal the
-operator authorizes from the picker.
+operator authorizes from the picker or in a reply.
 
 ## Turn boundary
 
@@ -272,34 +275,52 @@ and obey its limits and label conventions. Never name a tool
 the host does not expose, and do not switch modes merely to
 obtain one.
 
-Send one question with the header `Next`, single select, and
-one option per choice. Each label is the choice's ID and a
-short action, such as `H1: Sign in`. Each description is one
-line saying what picking the option does: what it authorizes
-for an agent item, what the operator will do or answer for a
-human item. Keep the `Next` order. If the host allows fewer
-options than there are choices, offer the first ones in
-order and make the additional-choices count the number of
-actionable choices not offered.
+When the human lane has an `H` item, send one question per
+`H` item, in the human lane's order. Write each question as
+a full sentence that starts with the ID and ends in `?`,
+such as `H1: Should the service move to the new region?`.
+Its header is the ID, such as `H1`, and it is single select.
+Its 2 to 4 options are the concrete answers to that
+question. Each label is a short answer, such as `Move it` or
+`Keep it here`; each description is one line saying what
+that answer means or what the agent will do next. If one
+call takes fewer questions than there are `H` items, ask the
+first ones in order and state
+`<N> additional human items are listed above.` immediately
+below `Next`, before the call, counting the `H` items not
+asked. Claude Code allows 1 to 4 questions per call and 2 to
+4 options per question; on any other host, read both limits
+from its tool's schema. A tool that takes one question per
+call asks `H1` alone under the same rule.
 
-A call needs at least as many options as the host requires;
-Claude Code requires two. When the human lane has an `H`
-item and the host requires more options than there are
-choices, add `Not now` as the last option. It authorizes
-nothing and is the only padding allowed. Never add it to a
-plain list.
+When an `H` item has only one natural answer, such as
+running a login command, offer `Done` and then `Not now`, so
+the question meets the two-option minimum. `Not now`
+authorizes nothing and is the only padding allowed. Never
+add it to a plain list.
+
+When the human lane is `None`, send one question with the
+header `Next`, single select, and one option per choice.
+Each label is the choice's ID and a short action, such as
+`A1: Run the tests`. Each description is one line saying
+what picking the option authorizes. Keep the `Next` order.
+If the host allows fewer options than there are choices,
+offer the first ones in order and make the
+additional-choices count the number of actionable choices
+not offered.
 
 Use a plain list under `Next`, with one ID-labelled option
 per line, instead of the call when the host exposes no
 structured-choice tool, the mode forbids it, the run is
-noninteractive, the tool cannot represent the choices
-faithfully, or the host cannot show the full lane report
-before the call. Use a plain list too when the human lane is
-`None` and only one actionable choice exists. The list
-carries the same IDs and labels the call would, without
-`Not now`. A picker selection authorizes only that choice
-and its necessary preparation; tool approval rules still
-apply.
+noninteractive, the tool cannot represent the questions or
+choices faithfully, or the host cannot show the full lane
+report before the call. Use a plain list too when the human
+lane is `None` and only one actionable choice exists. The
+list carries the choices that open `Next`, from both lanes,
+without `Not now`. A selected choice, or a reply naming an
+ID, authorizes only that choice and its necessary
+preparation; an answer authorizes only what its description
+says the agent will do. Tool approval rules still apply.
 
 For an interactive login, give the literal command. In
 Claude Code, suggest its `!`-prefixed form when shell
