@@ -3,6 +3,7 @@
   "measurements": "No benchmark, accuracy rate, or independent real-world performance measurement.",
   "base_commit": "2c176f9",
   "skill_identity": "skill_sha256 is the sha256 of skills/what-next/SKILL.md as run. Branch commit IDs do not survive a rebase merge, so tests bind runs to that content hash, not to a commit.",
+  "layout_note": "The edited phase ran the first draft of the picker-ending change, which asked one AskUserQuestion question headed Next whose options were ID-labelled choices from both lanes. The operator rejected that layout for one question per human-lane item, so no run here exercises the shipped SKILL.md.",
   "runs": [
     {
       "id": "claude-fable-5-1-human-and-agent-base",

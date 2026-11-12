@@ -44,7 +44,8 @@ not a screen capture. For reduced motion, open the
 A two-lane table, then one to four next actions — through
 the host's picker where there is one, as a plain list where
 there is not. When the human lane has an item, the picker
-call is the last thing in the response.
+call is the last thing in the response, and it asks one
+question per human item instead.
 
 ### Agent lane — proposed, not started
 
@@ -74,8 +75,11 @@ Unfinished preparation is proposed as an agent item; it is
 not described as already completed. If more than four
 actionable choices exist, the remaining count precedes the
 picker or plain list. A human item makes the picker call the
-ending; a host with no picker gets the same choices as a
-plain list.
+ending, with one question per human item: here,
+`H1: Will you run gh auth login now?`, headed `H1`, with the
+answers `Done` and `Not now`. `A1` stays in the table, and
+you authorize it by replying with its ID. A host with no
+picker gets the plain list shown.
 
 Explicit invocation determines only, even with no human
 blockers. An internal handoff check continues independent,
@@ -304,6 +308,13 @@ preceded the call in 2 of those 8 runs, so the known
 limitation above stands. No run on the agent-only control
 called it. The Codex runs exercise the plain list fallback
 only. Some outputs name throwaway temporary directories.
+
+Those runs predate the current layout. Their edited skill is
+the change's first draft, which asked one question headed
+`Next` whose options were ID-labelled choices from both
+lanes. The operator rejected that layout for one question
+per human item, and no recorded run exercises the current
+text.
 
 Heading levels and punctuation vary between the captured
 outputs. Tests enforce the lane order, exact columns, IDs,
