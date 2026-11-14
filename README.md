@@ -118,7 +118,7 @@ shell will end that shell if the clone fails.
 
 ```sh
 set -eu
-release=v1.0.0
+release=v1.1.0
 install_parent="$HOME/.claude/skills"
 install_target="$install_parent/what-next"
 mkdir -p "$install_parent"
@@ -164,7 +164,7 @@ the block above is `install_parent`.
 
 ```sh
 set -eu
-release=v1.0.0
+release=v1.1.0
 install_parent="$HOME/.agents/skills"
 install_target="$install_parent/what-next"
 mkdir -p "$install_parent"
