@@ -283,7 +283,7 @@ Its header is the ID, such as `H1`, and it is single select.
 Its 2 to 4 options are the concrete answers to that
 question. Each label is a short answer, such as `Move it` or
 `Keep it here`; each description is one line saying what
-that answer means or what the agent will do next. If one
+that answer means or what The Agent will do next. If one
 call takes fewer questions than there are `H` items, ask the
 first ones in order and state
 `<N> additional human items are listed above.` immediately
@@ -298,6 +298,17 @@ running a login command, offer `Done` and then `Not now`, so
 the question meets the two-option minimum. `Not now`
 authorizes nothing and is the only padding allowed. Never
 add it to a plain list.
+
+Name who acts as **The Agent** or **The Human** in every
+question, option label and description, never with "I",
+"you", "me", "we" or "your". A picker is read apart from the
+prose around it, and a pronoun's referent flips with the
+reader, so `You merge them` and `I'll merge, ping me` leave
+it unclear who does what. Write `The Agent merges them` and
+`The Human merges; The Agent pings`, and ask
+`H1: Should The Agent merge the pull request?`, not
+`H1: Should I merge the pull request?`. A plain list follows
+the same rule.
 
 When the human lane is `None`, send one question with the
 header `Next`, single select, and one option per choice.
@@ -320,7 +331,7 @@ list carries the choices that open `Next`, from both lanes,
 without `Not now`. A selected choice, or a reply naming an
 ID, authorizes only that choice and its necessary
 preparation; an answer authorizes only what its description
-says the agent will do. Tool approval rules still apply.
+says The Agent will do. Tool approval rules still apply.
 
 For an interactive login, give the literal command. In
 Claude Code, suggest its `!`-prefixed form when shell
