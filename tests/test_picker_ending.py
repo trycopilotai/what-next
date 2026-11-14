@@ -107,6 +107,17 @@ class TestSkillText(unittest.TestCase):
                 self.assertTrue(sentence.startswith("When the human lane is `None`"))
         self.assertNotIn("`H1: Sign in`", body)
 
+    def test_host_adapters_name_the_actors_the_agent_and_the_human(self):
+        """A pronoun in a picker flips with the reader: `You merge them` was misread."""
+        body = section(self.text, "## Host adapters")
+        self.assertIn("Name who acts as **The Agent** or **The Human**", body)
+        self.assertIn('never with "I", "you", "me", "we" or "your"', body)
+        self.assertIn("`The Agent merges them`", body)
+        self.assertIn("`H1: Should The Agent merge the pull request?`", body)
+        self.assertIn("A plain list follows the same rule.", body)
+        self.assertNotIn("what the agent will do", body)
+        self.assertNotIn("says the agent will do", body)
+
     def test_host_adapters_keep_the_plain_list_fallback(self):
         body = section(self.text, "## Host adapters")
         self.assertIn("noninteractive", body)
